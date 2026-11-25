@@ -1,8 +1,6 @@
 # Outnumber
 
-<video src="https://github.com/mc-marcocheng/outnumber_daily/raw/refs/heads/main/public/outnumber-synced.mp4" controls muted width="100%"></video>
-
-If the video does not load, open [public/outnumber-synced.mp4](public/outnumber-synced.mp4).
+https://github.com/user-attachments/assets/8752b05a-c41f-4e51-a689-50f9b647cd2e
 
 Outnumber is a daily Reddit puzzle. You choose a path through arithmetic tiles and enemies, and you need to reach the final boss with a bigger number than it has.
 
