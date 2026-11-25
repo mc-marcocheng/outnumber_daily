@@ -34,7 +34,7 @@
     "@hono/node-server": "2.1.6",
     "@radix-ui/react-dialog": "1.1.23",
     "devvit": "0.15.3",
-    "hono": "4.13.17",
+    "hono": "4.13.22",
     "i18next": "26.4.2",
     "lucide-react": "1.73.0",
     "react": "19.3.1",
