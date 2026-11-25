@@ -1,5 +1,9 @@
 # Outnumber
 
+<video src="https://github.com/mc-marcocheng/outnumber_daily/raw/main/public/outnumber-synced.mp4" controls muted width="100%"></video>
+
+If the video does not load, open [public/outnumber-synced.mp4](public/outnumber-synced.mp4).
+
 Outnumber is a daily Reddit puzzle. You choose a path through arithmetic tiles and enemies, and you need to reach the final boss with a bigger number than it has.
 
 The order you visit tiles decides the math. Start at 12, subtract 4, then triple your number, and you get (12 − 4) × 3 = 24. Visit the same tiles in reverse and you get 12 × 3 − 4 = 32. Which route is better depends on the enemies ahead, and sometimes it pays to divide.
