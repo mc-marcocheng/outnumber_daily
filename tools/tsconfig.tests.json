@@ -1,0 +1,27 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "outDir": "../dist/types/tests",
+    "tsBuildInfoFile": "../dist/types/tests/tsconfig.tsbuildinfo",
+    "noUncheckedIndexedAccess": false,
+    "exactOptionalPropertyTypes": false,
+    "rootDir": "../tests"
+  },
+  "include": ["../tests/**/*", "../tests/**/*.json"],
+  "exclude": [],
+  "references": [
+    {
+      "path": "./tsconfig.tools.json"
+    },
+    {
+      "path": "./tsconfig.shared.json"
+    },
+    {
+      "path": "./tsconfig.client.json"
+    },
+    {
+      "path": "./tsconfig.server.json"
+    }
+  ]
+}

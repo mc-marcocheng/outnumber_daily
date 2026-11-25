@@ -1,0 +1,8 @@
+dist
+node_modules
+package-lock.json
+patches
+public
+content/sample-season.json
+season
+.work

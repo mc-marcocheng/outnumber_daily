@@ -1,0 +1,27 @@
+diff --git a/node_modules/@devvit/reddit/models/User.d.ts b/node_modules/@devvit/reddit/models/User.d.ts
+index 44431a2..777432e 100644
+--- a/node_modules/@devvit/reddit/models/User.d.ts
++++ b/node_modules/@devvit/reddit/models/User.d.ts
+@@ -139,6 +139,7 @@ export declare class User {
+      * @example 'spez'
+      */
+     get username(): string;
++    readonly profileImageUrl: string | undefined;
+     /**
+      * The date the user was created.
+      */
+diff --git a/node_modules/@devvit/reddit/models/User.js b/node_modules/@devvit/reddit/models/User.js
+index f6afc5b..71fa926 100644
+--- a/node_modules/@devvit/reddit/models/User.js
++++ b/node_modules/@devvit/reddit/models/User.js
+@@ -104,6 +104,10 @@ export class User {
+         _User_hasVerifiedEmail.set(this, void 0);
+         _User_displayName.set(this, void 0);
+         _User_about.set(this, void 0);
++        Object.defineProperty(this, 'profileImageUrl', {
++            value: data.iconImg || undefined,
++            enumerable: true,
++        });
+         makeGettersEnumerable(this);
+         assertNonNull(data.id, 'User ID is missing or undefined');
+         assertNonNull(data.name, 'Username is missing or undefined');

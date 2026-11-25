@@ -1,0 +1,17 @@
+{
+  "formatVersion": 1,
+  "id": "010-bank-it",
+  "revision": 2,
+  "title": "Bank It",
+  "width": 5,
+  "terrain": [".....", ".....", "....."],
+  "startCell": 7,
+  "startValue": "5",
+  "spareLives": 1,
+  "tiles": [
+    { "id": "banka", "kind": "enemy", "cell": 5, "value": "8" },
+    { "id": "bankb", "kind": "enemy", "cell": 9, "value": "21" },
+    { "id": "mulm", "kind": "multiply", "cell": 12, "amount": "3" },
+    { "id": "boss", "kind": "boss", "cell": 14, "value": "45" }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../dist/types/tools-cli",
+    "tsBuildInfoFile": "../dist/types/tools-cli/tsconfig.tsbuildinfo",
+    "types": ["node"],
+    "noUncheckedIndexedAccess": false,
+    "exactOptionalPropertyTypes": false,
+    "rootDir": "../tools"
+  },
+  "include": ["../tools/**/*.ts"],
+  "exclude": ["../tools/**/*.json"],
+  "references": [{ "path": "./tsconfig.shared.json" }]
+}

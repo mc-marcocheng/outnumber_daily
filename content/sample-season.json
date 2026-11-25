@@ -1,0 +1,1783 @@
+{
+  "pools": {
+    "advanced": [
+      "sample-easy-1",
+      "sample-easy-2",
+      "sample-easy-3",
+      "sample-easy-4",
+      "sample-easy-5"
+    ],
+    "expert": [
+      "sample-medium-1",
+      "sample-medium-2",
+      "sample-medium-3",
+      "sample-medium-4",
+      "sample-medium-5"
+    ],
+    "master": [
+      "sample-hard-1",
+      "sample-hard-2",
+      "sample-hard-3",
+      "sample-hard-4",
+      "sample-hard-5"
+    ]
+  },
+  "levels": {
+    "sample-easy-1": {
+      "formatVersion": 1,
+      "id": "sample-easy-1",
+      "revision": 1,
+      "title": "Bank First",
+      "width": 5,
+      "terrain": [
+        ".....",
+        ".....",
+        "....."
+      ],
+      "startCell": 7,
+      "startValue": "3",
+      "spareLives": 1,
+      "tiles": [
+        {
+          "id": "sets",
+          "cell": 0,
+          "kind": "set",
+          "amount": "6"
+        },
+        {
+          "id": "sett",
+          "cell": 2,
+          "kind": "set",
+          "amount": "9"
+        },
+        {
+          "id": "bank",
+          "cell": 5,
+          "kind": "enemy",
+          "value": "38",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "add1",
+          "cell": 9,
+          "kind": "add",
+          "amount": "2"
+        },
+        {
+          "id": "snack1",
+          "cell": 13,
+          "kind": "enemy",
+          "value": "10",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "add2",
+          "cell": 10,
+          "kind": "add",
+          "amount": "2"
+        },
+        {
+          "id": "snack2",
+          "cell": 3,
+          "kind": "enemy",
+          "value": "22",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "mul",
+          "cell": 12,
+          "kind": "multiply",
+          "amount": "2"
+        },
+        {
+          "id": "boss",
+          "cell": 14,
+          "kind": "boss",
+          "value": "90"
+        }
+      ]
+    },
+    "sample-easy-2": {
+      "formatVersion": 1,
+      "id": "sample-easy-2",
+      "revision": 1,
+      "title": "One Short",
+      "width": 5,
+      "terrain": [
+        ".....",
+        ".....",
+        "....."
+      ],
+      "startCell": 7,
+      "startValue": "4",
+      "spareLives": 2,
+      "tiles": [
+        {
+          "id": "sets",
+          "cell": 0,
+          "kind": "set",
+          "amount": "5"
+        },
+        {
+          "id": "sett",
+          "cell": 4,
+          "kind": "set",
+          "amount": "9"
+        },
+        {
+          "id": "banka",
+          "cell": 5,
+          "kind": "enemy",
+          "value": "27"
+        },
+        {
+          "id": "setu",
+          "cell": 10,
+          "kind": "set",
+          "amount": "21"
+        },
+        {
+          "id": "mulm",
+          "cell": 12,
+          "kind": "multiply",
+          "amount": "2"
+        },
+        {
+          "id": "snack",
+          "cell": 13,
+          "kind": "enemy",
+          "value": "82",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "boss",
+          "cell": 14,
+          "kind": "boss",
+          "value": "83"
+        }
+      ]
+    },
+    "sample-easy-3": {
+      "formatVersion": 1,
+      "id": "sample-easy-3",
+      "revision": 1,
+      "title": "Two Piggy Banks",
+      "width": 6,
+      "terrain": [
+        "#.##.#",
+        "#.##.#",
+        "......",
+        "......"
+      ],
+      "startCell": 20,
+      "startValue": "6",
+      "spareLives": 2,
+      "tiles": [
+        {
+          "id": "add4",
+          "cell": 1,
+          "kind": "add",
+          "amount": "2"
+        },
+        {
+          "id": "t1",
+          "cell": 4,
+          "kind": "enemy",
+          "value": "53"
+        },
+        {
+          "id": "banka",
+          "cell": 7,
+          "kind": "enemy",
+          "value": "9"
+        },
+        {
+          "id": "bankb",
+          "cell": 10,
+          "kind": "enemy",
+          "value": "14"
+        },
+        {
+          "id": "setv",
+          "cell": 12,
+          "kind": "set",
+          "amount": "17"
+        },
+        {
+          "id": "mulm",
+          "cell": 15,
+          "kind": "multiply",
+          "amount": "2"
+        },
+        {
+          "id": "boss",
+          "cell": 23,
+          "kind": "boss",
+          "value": "164"
+        }
+      ]
+    },
+    "sample-easy-4": {
+      "formatVersion": 1,
+      "id": "sample-easy-4",
+      "revision": 1,
+      "title": "Split Savings",
+      "width": 5,
+      "terrain": [
+        ".....",
+        ".....",
+        "....."
+      ],
+      "startCell": 7,
+      "startValue": "3",
+      "spareLives": 1,
+      "tiles": [
+        {
+          "id": "sets",
+          "cell": 0,
+          "kind": "set",
+          "amount": "5"
+        },
+        {
+          "id": "sett",
+          "cell": 2,
+          "kind": "set",
+          "amount": "9"
+        },
+        {
+          "id": "bank",
+          "cell": 5,
+          "kind": "enemy",
+          "value": "39",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "add1",
+          "cell": 9,
+          "kind": "add",
+          "amount": "2"
+        },
+        {
+          "id": "snack1",
+          "cell": 13,
+          "kind": "enemy",
+          "value": "10",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "add2",
+          "cell": 10,
+          "kind": "add",
+          "amount": "2"
+        },
+        {
+          "id": "snack2",
+          "cell": 3,
+          "kind": "enemy",
+          "value": "22",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "mul",
+          "cell": 12,
+          "kind": "multiply",
+          "amount": "3"
+        },
+        {
+          "id": "boss",
+          "cell": 14,
+          "kind": "boss",
+          "value": "136"
+        }
+      ]
+    },
+    "sample-easy-5": {
+      "formatVersion": 1,
+      "id": "sample-easy-5",
+      "revision": 1,
+      "title": "Late Multipliers",
+      "width": 5,
+      "terrain": [
+        ".....",
+        ".....",
+        "....."
+      ],
+      "startCell": 7,
+      "startValue": "3",
+      "spareLives": 1,
+      "tiles": [
+        {
+          "id": "sets",
+          "cell": 0,
+          "kind": "set",
+          "amount": "5"
+        },
+        {
+          "id": "sett",
+          "cell": 2,
+          "kind": "set",
+          "amount": "12"
+        },
+        {
+          "id": "bank",
+          "cell": 5,
+          "kind": "enemy",
+          "value": "55",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "add1",
+          "cell": 9,
+          "kind": "add",
+          "amount": "2"
+        },
+        {
+          "id": "snack1",
+          "cell": 13,
+          "kind": "enemy",
+          "value": "13",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "add2",
+          "cell": 10,
+          "kind": "add",
+          "amount": "4"
+        },
+        {
+          "id": "snack2",
+          "cell": 3,
+          "kind": "enemy",
+          "value": "30",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "mul",
+          "cell": 12,
+          "kind": "multiply",
+          "amount": "3"
+        },
+        {
+          "id": "boss",
+          "cell": 14,
+          "kind": "boss",
+          "value": "185"
+        }
+      ]
+    },
+    "sample-medium-1": {
+      "formatVersion": 1,
+      "id": "sample-medium-1",
+      "revision": 1,
+      "title": "Twin Engines",
+      "width": 5,
+      "terrain": [
+        ".....",
+        ".....",
+        "....."
+      ],
+      "startCell": 7,
+      "startValue": "3",
+      "spareLives": 1,
+      "tiles": [
+        {
+          "id": "sets",
+          "cell": 0,
+          "kind": "set",
+          "amount": "8"
+        },
+        {
+          "id": "sett",
+          "cell": 2,
+          "kind": "set",
+          "amount": "12"
+        },
+        {
+          "id": "bank",
+          "cell": 5,
+          "kind": "enemy",
+          "value": "60",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "add1",
+          "cell": 9,
+          "kind": "add",
+          "amount": "4"
+        },
+        {
+          "id": "snack1",
+          "cell": 13,
+          "kind": "enemy",
+          "value": "15",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "add2",
+          "cell": 10,
+          "kind": "add",
+          "amount": "4"
+        },
+        {
+          "id": "snack2",
+          "cell": 3,
+          "kind": "enemy",
+          "value": "34",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "mul",
+          "cell": 12,
+          "kind": "multiply",
+          "amount": "3"
+        },
+        {
+          "id": "boss",
+          "cell": 14,
+          "kind": "boss",
+          "value": "213"
+        }
+      ]
+    },
+    "sample-medium-2": {
+      "formatVersion": 1,
+      "id": "sample-medium-2",
+      "revision": 1,
+      "title": "Feed the Vault",
+      "width": 5,
+      "terrain": [
+        ".....",
+        ".....",
+        "....."
+      ],
+      "startCell": 7,
+      "startValue": "3",
+      "spareLives": 1,
+      "tiles": [
+        {
+          "id": "sets",
+          "cell": 0,
+          "kind": "set",
+          "amount": "7"
+        },
+        {
+          "id": "sett",
+          "cell": 2,
+          "kind": "set",
+          "amount": "12"
+        },
+        {
+          "id": "bank",
+          "cell": 5,
+          "kind": "enemy",
+          "value": "49",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "add1",
+          "cell": 9,
+          "kind": "add",
+          "amount": "2"
+        },
+        {
+          "id": "snack1",
+          "cell": 13,
+          "kind": "enemy",
+          "value": "13",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "add2",
+          "cell": 10,
+          "kind": "add",
+          "amount": "2"
+        },
+        {
+          "id": "snack2",
+          "cell": 3,
+          "kind": "enemy",
+          "value": "28",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "mul",
+          "cell": 12,
+          "kind": "multiply",
+          "amount": "2"
+        },
+        {
+          "id": "boss",
+          "cell": 14,
+          "kind": "boss",
+          "value": "121"
+        }
+      ]
+    },
+    "sample-medium-3": {
+      "formatVersion": 1,
+      "id": "sample-medium-3",
+      "revision": 1,
+      "title": "One Life to Live",
+      "width": 5,
+      "terrain": [
+        ".....",
+        ".....",
+        "....."
+      ],
+      "startCell": 7,
+      "startValue": "3",
+      "spareLives": 1,
+      "tiles": [
+        {
+          "id": "sets",
+          "cell": 0,
+          "kind": "set",
+          "amount": "5"
+        },
+        {
+          "id": "sett",
+          "cell": 2,
+          "kind": "set",
+          "amount": "10"
+        },
+        {
+          "id": "bank",
+          "cell": 5,
+          "kind": "enemy",
+          "value": "49",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "add1",
+          "cell": 9,
+          "kind": "add",
+          "amount": "3"
+        },
+        {
+          "id": "snack1",
+          "cell": 13,
+          "kind": "enemy",
+          "value": "12",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "add2",
+          "cell": 10,
+          "kind": "add",
+          "amount": "3"
+        },
+        {
+          "id": "snack2",
+          "cell": 3,
+          "kind": "enemy",
+          "value": "27",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "mul",
+          "cell": 12,
+          "kind": "multiply",
+          "amount": "2"
+        },
+        {
+          "id": "boss",
+          "cell": 14,
+          "kind": "boss",
+          "value": "110"
+        }
+      ]
+    },
+    "sample-medium-4": {
+      "formatVersion": 1,
+      "id": "sample-medium-4",
+      "revision": 1,
+      "title": "Patient Multipliers",
+      "width": 5,
+      "terrain": [
+        ".....",
+        ".....",
+        "....."
+      ],
+      "startCell": 7,
+      "startValue": "4",
+      "spareLives": 1,
+      "tiles": [
+        {
+          "id": "sets",
+          "cell": 0,
+          "kind": "set",
+          "amount": "6"
+        },
+        {
+          "id": "sett",
+          "cell": 2,
+          "kind": "set",
+          "amount": "11"
+        },
+        {
+          "id": "bank",
+          "cell": 5,
+          "kind": "enemy",
+          "value": "58",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "add1",
+          "cell": 9,
+          "kind": "add",
+          "amount": "4"
+        },
+        {
+          "id": "snack1",
+          "cell": 13,
+          "kind": "enemy",
+          "value": "14",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "add2",
+          "cell": 10,
+          "kind": "add",
+          "amount": "4"
+        },
+        {
+          "id": "snack2",
+          "cell": 3,
+          "kind": "enemy",
+          "value": "32",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "mul",
+          "cell": 12,
+          "kind": "multiply",
+          "amount": "3"
+        },
+        {
+          "id": "boss",
+          "cell": 14,
+          "kind": "boss",
+          "value": "197"
+        }
+      ]
+    },
+    "sample-medium-5": {
+      "formatVersion": 1,
+      "id": "sample-medium-5",
+      "revision": 1,
+      "title": "Quadruple Books",
+      "width": 5,
+      "terrain": [
+        ".....",
+        ".....",
+        "....."
+      ],
+      "startCell": 7,
+      "startValue": "4",
+      "spareLives": 1,
+      "tiles": [
+        {
+          "id": "sets",
+          "cell": 0,
+          "kind": "set",
+          "amount": "7"
+        },
+        {
+          "id": "sett",
+          "cell": 2,
+          "kind": "set",
+          "amount": "11"
+        },
+        {
+          "id": "bank",
+          "cell": 5,
+          "kind": "enemy",
+          "value": "53",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "add1",
+          "cell": 9,
+          "kind": "add",
+          "amount": "4"
+        },
+        {
+          "id": "snack1",
+          "cell": 13,
+          "kind": "enemy",
+          "value": "14",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "add2",
+          "cell": 10,
+          "kind": "add",
+          "amount": "2"
+        },
+        {
+          "id": "snack2",
+          "cell": 3,
+          "kind": "enemy",
+          "value": "30",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "mul",
+          "cell": 12,
+          "kind": "multiply",
+          "amount": "2"
+        },
+        {
+          "id": "boss",
+          "cell": 14,
+          "kind": "boss",
+          "value": "125"
+        }
+      ]
+    },
+    "sample-hard-1": {
+      "formatVersion": 1,
+      "id": "sample-hard-1",
+      "revision": 1,
+      "title": "The Grand Ledger",
+      "width": 5,
+      "terrain": [
+        ".....",
+        ".....",
+        "....."
+      ],
+      "startCell": 7,
+      "startValue": "3",
+      "spareLives": 2,
+      "tiles": [
+        {
+          "id": "sets",
+          "cell": 0,
+          "kind": "set",
+          "amount": "5"
+        },
+        {
+          "id": "snack1",
+          "cell": 1,
+          "kind": "enemy",
+          "value": "6",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "snack2",
+          "cell": 2,
+          "kind": "enemy",
+          "value": "12",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "add1",
+          "cell": 3,
+          "kind": "add",
+          "amount": "4"
+        },
+        {
+          "id": "banka",
+          "cell": 4,
+          "kind": "enemy",
+          "value": "19",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "bankb",
+          "cell": 10,
+          "kind": "enemy",
+          "value": "5",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "setu",
+          "cell": 11,
+          "kind": "set",
+          "amount": "28"
+        },
+        {
+          "id": "snack3",
+          "cell": 12,
+          "kind": "enemy",
+          "value": "27",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "mulm",
+          "cell": 13,
+          "kind": "multiply",
+          "amount": "3"
+        },
+        {
+          "id": "boss",
+          "cell": 14,
+          "kind": "boss",
+          "value": "180"
+        }
+      ]
+    },
+    "sample-hard-2": {
+      "formatVersion": 1,
+      "id": "sample-hard-2",
+      "revision": 1,
+      "title": "The Borrowed Fortune",
+      "width": 5,
+      "terrain": [
+        ".....",
+        ".....",
+        "....."
+      ],
+      "startCell": 7,
+      "startValue": "4",
+      "spareLives": 2,
+      "tiles": [
+        {
+          "id": "sets",
+          "cell": 0,
+          "kind": "set",
+          "amount": "9"
+        },
+        {
+          "id": "snack1",
+          "cell": 1,
+          "kind": "enemy",
+          "value": "6",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "snack2",
+          "cell": 2,
+          "kind": "enemy",
+          "value": "12",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "add1",
+          "cell": 3,
+          "kind": "add",
+          "amount": "3"
+        },
+        {
+          "id": "banka",
+          "cell": 4,
+          "kind": "enemy",
+          "value": "15",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "bankb",
+          "cell": 10,
+          "kind": "enemy",
+          "value": "9",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "setu",
+          "cell": 11,
+          "kind": "set",
+          "amount": "30"
+        },
+        {
+          "id": "snack3",
+          "cell": 12,
+          "kind": "enemy",
+          "value": "29",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "mulm",
+          "cell": 13,
+          "kind": "multiply",
+          "amount": "2"
+        },
+        {
+          "id": "boss",
+          "cell": 14,
+          "kind": "boss",
+          "value": "129"
+        }
+      ]
+    },
+    "sample-hard-3": {
+      "formatVersion": 1,
+      "id": "sample-hard-3",
+      "revision": 1,
+      "title": "The Auditor's Nightmare",
+      "width": 5,
+      "terrain": [
+        ".....",
+        ".....",
+        "....."
+      ],
+      "startCell": 7,
+      "startValue": "5",
+      "spareLives": 2,
+      "tiles": [
+        {
+          "id": "sets",
+          "cell": 0,
+          "kind": "set",
+          "amount": "9"
+        },
+        {
+          "id": "snack1",
+          "cell": 1,
+          "kind": "enemy",
+          "value": "7",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "snack2",
+          "cell": 2,
+          "kind": "enemy",
+          "value": "14",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "add1",
+          "cell": 3,
+          "kind": "add",
+          "amount": "3"
+        },
+        {
+          "id": "banka",
+          "cell": 4,
+          "kind": "enemy",
+          "value": "19",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "bankb",
+          "cell": 10,
+          "kind": "enemy",
+          "value": "9",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "setu",
+          "cell": 11,
+          "kind": "set",
+          "amount": "34"
+        },
+        {
+          "id": "snack3",
+          "cell": 12,
+          "kind": "enemy",
+          "value": "33",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "mulm",
+          "cell": 13,
+          "kind": "multiply",
+          "amount": "2"
+        },
+        {
+          "id": "boss",
+          "cell": 14,
+          "kind": "boss",
+          "value": "145"
+        }
+      ]
+    },
+    "sample-hard-4": {
+      "formatVersion": 1,
+      "id": "sample-hard-4",
+      "revision": 1,
+      "title": "The Unbalanced Book",
+      "width": 5,
+      "terrain": [
+        ".....",
+        ".....",
+        "....."
+      ],
+      "startCell": 7,
+      "startValue": "4",
+      "spareLives": 2,
+      "tiles": [
+        {
+          "id": "sets",
+          "cell": 0,
+          "kind": "set",
+          "amount": "8"
+        },
+        {
+          "id": "snack1",
+          "cell": 1,
+          "kind": "enemy",
+          "value": "6",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "snack2",
+          "cell": 2,
+          "kind": "enemy",
+          "value": "12",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "add1",
+          "cell": 3,
+          "kind": "add",
+          "amount": "3"
+        },
+        {
+          "id": "banka",
+          "cell": 4,
+          "kind": "enemy",
+          "value": "16",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "bankb",
+          "cell": 10,
+          "kind": "enemy",
+          "value": "5",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "setu",
+          "cell": 11,
+          "kind": "set",
+          "amount": "28"
+        },
+        {
+          "id": "snack3",
+          "cell": 12,
+          "kind": "enemy",
+          "value": "27",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "mulm",
+          "cell": 13,
+          "kind": "multiply",
+          "amount": "3"
+        },
+        {
+          "id": "boss",
+          "cell": 14,
+          "kind": "boss",
+          "value": "177"
+        }
+      ]
+    },
+    "sample-hard-5": {
+      "formatVersion": 1,
+      "id": "sample-hard-5",
+      "revision": 1,
+      "title": "Ledger of Debts",
+      "width": 5,
+      "terrain": [
+        ".....",
+        ".....",
+        "....."
+      ],
+      "startCell": 7,
+      "startValue": "4",
+      "spareLives": 2,
+      "tiles": [
+        {
+          "id": "sets",
+          "cell": 0,
+          "kind": "set",
+          "amount": "9"
+        },
+        {
+          "id": "snack1",
+          "cell": 1,
+          "kind": "enemy",
+          "value": "6",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "snack2",
+          "cell": 2,
+          "kind": "enemy",
+          "value": "12",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "add1",
+          "cell": 3,
+          "kind": "add",
+          "amount": "3"
+        },
+        {
+          "id": "banka",
+          "cell": 4,
+          "kind": "enemy",
+          "value": "15",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "bankb",
+          "cell": 10,
+          "kind": "enemy",
+          "value": "7",
+          "maxSurplus": "2"
+        },
+        {
+          "id": "setu",
+          "cell": 11,
+          "kind": "set",
+          "amount": "29"
+        },
+        {
+          "id": "snack3",
+          "cell": 12,
+          "kind": "enemy",
+          "value": "28",
+          "maxSurplus": "1"
+        },
+        {
+          "id": "mulm",
+          "cell": 13,
+          "kind": "multiply",
+          "amount": "3"
+        },
+        {
+          "id": "boss",
+          "cell": 14,
+          "kind": "boss",
+          "value": "184"
+        }
+      ]
+    }
+  },
+  "certificates": {
+    "sample-easy-1": {
+      "levelId": "sample-easy-1",
+      "contentHash": "d128a85bc5218b961d8b638aa727ff15df9a7330ffd73cb26d2ca7840b8ba243",
+      "minimumActions": 10,
+      "shortestSolution": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "bank",
+        "mul",
+        "boss"
+      ],
+      "minimumSteps": 27,
+      "stepOptimalSolution": [
+        "sets",
+        "bank",
+        "sett",
+        "add2",
+        "snack1",
+        "add1",
+        "snack2",
+        "bank",
+        "mul",
+        "boss"
+      ],
+      "requiredRespawns": 1,
+      "criticalTileIds": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "mul"
+      ]
+    },
+    "sample-easy-2": {
+      "levelId": "sample-easy-2",
+      "contentHash": "0a3a4520e8c20eafcd34e71b5a462859c9d61939477d0c3c9478a7cbfe79fa18",
+      "minimumActions": 9,
+      "shortestSolution": [
+        "sets",
+        "banka",
+        "sett",
+        "banka",
+        "setu",
+        "mulm",
+        "banka",
+        "snack",
+        "boss"
+      ],
+      "minimumSteps": 25,
+      "stepOptimalSolution": [
+        "sets",
+        "banka",
+        "sett",
+        "banka",
+        "setu",
+        "mulm",
+        "banka",
+        "snack",
+        "boss"
+      ],
+      "requiredRespawns": 2,
+      "criticalTileIds": [
+        "sets",
+        "banka",
+        "sett",
+        "setu",
+        "mulm",
+        "snack"
+      ]
+    },
+    "sample-easy-3": {
+      "levelId": "sample-easy-3",
+      "contentHash": "49af3057d57990f4cbd713ca9a67c9b3d75193d4f88dd75c1b61a77bdcbf0ca7",
+      "minimumActions": 9,
+      "shortestSolution": [
+        "banka",
+        "banka",
+        "setv",
+        "bankb",
+        "banka",
+        "add4",
+        "t1",
+        "mulm",
+        "boss"
+      ],
+      "minimumSteps": 28,
+      "stepOptimalSolution": [
+        "banka",
+        "bankb",
+        "setv",
+        "banka",
+        "add4",
+        "bankb",
+        "t1",
+        "mulm",
+        "boss"
+      ],
+      "requiredRespawns": 2,
+      "criticalTileIds": [
+        "banka",
+        "setv",
+        "bankb",
+        "add4",
+        "t1",
+        "mulm"
+      ]
+    },
+    "sample-easy-4": {
+      "levelId": "sample-easy-4",
+      "contentHash": "d463a6313fc851e672cbb7106a00ece90a3674c72119a75d163ca804af24bd0a",
+      "minimumActions": 10,
+      "shortestSolution": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "bank",
+        "mul",
+        "boss"
+      ],
+      "minimumSteps": 27,
+      "stepOptimalSolution": [
+        "sets",
+        "bank",
+        "sett",
+        "add2",
+        "snack1",
+        "add1",
+        "snack2",
+        "bank",
+        "mul",
+        "boss"
+      ],
+      "requiredRespawns": 1,
+      "criticalTileIds": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "mul"
+      ]
+    },
+    "sample-easy-5": {
+      "levelId": "sample-easy-5",
+      "contentHash": "35495ec4c1b1ebdd56d1292fa61c8e0b4c0f4858b0b3378c8a4eaf50e2bf06dd",
+      "minimumActions": 10,
+      "shortestSolution": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "bank",
+        "mul",
+        "boss"
+      ],
+      "minimumSteps": 29,
+      "stepOptimalSolution": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "bank",
+        "mul",
+        "boss"
+      ],
+      "requiredRespawns": 1,
+      "criticalTileIds": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "mul"
+      ]
+    },
+    "sample-medium-1": {
+      "levelId": "sample-medium-1",
+      "contentHash": "98342518730b9b343242a2372a18d696619762adfe27ec7d5ab1199b1e32cd2b",
+      "minimumActions": 10,
+      "shortestSolution": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "bank",
+        "mul",
+        "boss"
+      ],
+      "minimumSteps": 27,
+      "stepOptimalSolution": [
+        "sets",
+        "bank",
+        "sett",
+        "add2",
+        "snack1",
+        "add1",
+        "snack2",
+        "bank",
+        "mul",
+        "boss"
+      ],
+      "requiredRespawns": 1,
+      "criticalTileIds": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "mul"
+      ]
+    },
+    "sample-medium-2": {
+      "levelId": "sample-medium-2",
+      "contentHash": "7355c287f65ec2c4cd859882177f2ee82bcd50fa52c792bdba3658fcfacd1171",
+      "minimumActions": 10,
+      "shortestSolution": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "bank",
+        "mul",
+        "boss"
+      ],
+      "minimumSteps": 27,
+      "stepOptimalSolution": [
+        "sets",
+        "bank",
+        "sett",
+        "add2",
+        "snack1",
+        "add1",
+        "snack2",
+        "bank",
+        "mul",
+        "boss"
+      ],
+      "requiredRespawns": 1,
+      "criticalTileIds": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "mul"
+      ]
+    },
+    "sample-medium-3": {
+      "levelId": "sample-medium-3",
+      "contentHash": "910b7e0ee0e38f9a4bf27f6ca6f61cbf677334b77da8cd107d13d19d3940bb8d",
+      "minimumActions": 10,
+      "shortestSolution": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "bank",
+        "mul",
+        "boss"
+      ],
+      "minimumSteps": 27,
+      "stepOptimalSolution": [
+        "sets",
+        "bank",
+        "sett",
+        "add2",
+        "snack1",
+        "add1",
+        "snack2",
+        "bank",
+        "mul",
+        "boss"
+      ],
+      "requiredRespawns": 1,
+      "criticalTileIds": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "mul"
+      ]
+    },
+    "sample-medium-4": {
+      "levelId": "sample-medium-4",
+      "contentHash": "05c4492f0bbc35f8b816a64c3aff406eb63289ecb8d8665f711f566657045d2f",
+      "minimumActions": 10,
+      "shortestSolution": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "bank",
+        "mul",
+        "boss"
+      ],
+      "minimumSteps": 27,
+      "stepOptimalSolution": [
+        "sets",
+        "bank",
+        "sett",
+        "add2",
+        "snack1",
+        "add1",
+        "snack2",
+        "bank",
+        "mul",
+        "boss"
+      ],
+      "requiredRespawns": 1,
+      "criticalTileIds": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "mul"
+      ]
+    },
+    "sample-medium-5": {
+      "levelId": "sample-medium-5",
+      "contentHash": "784425abd5ab2393ce312d13705c6826baa5ee4292d4bef70171ffbaafc12f6f",
+      "minimumActions": 10,
+      "shortestSolution": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "bank",
+        "mul",
+        "boss"
+      ],
+      "minimumSteps": 29,
+      "stepOptimalSolution": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "bank",
+        "mul",
+        "boss"
+      ],
+      "requiredRespawns": 1,
+      "criticalTileIds": [
+        "sets",
+        "bank",
+        "sett",
+        "add1",
+        "snack1",
+        "add2",
+        "snack2",
+        "mul"
+      ]
+    },
+    "sample-hard-1": {
+      "levelId": "sample-hard-1",
+      "contentHash": "369484685eb2364c6530d96a7bc06bcdc3c4792d56f6958a591968fc20ab7648",
+      "minimumActions": 12,
+      "shortestSolution": [
+        "sets",
+        "banka",
+        "add1",
+        "snack1",
+        "snack2",
+        "banka",
+        "bankb",
+        "setu",
+        "snack3",
+        "bankb",
+        "mulm",
+        "boss"
+      ],
+      "minimumSteps": 33,
+      "stepOptimalSolution": [
+        "sets",
+        "banka",
+        "add1",
+        "snack1",
+        "snack2",
+        "banka",
+        "bankb",
+        "setu",
+        "snack3",
+        "bankb",
+        "mulm",
+        "boss"
+      ],
+      "requiredRespawns": 2,
+      "criticalTileIds": [
+        "sets",
+        "banka",
+        "add1",
+        "snack1",
+        "snack2",
+        "bankb",
+        "setu",
+        "snack3",
+        "mulm"
+      ]
+    },
+    "sample-hard-2": {
+      "levelId": "sample-hard-2",
+      "contentHash": "59435706b0862ee50ca4ad3ca2ee1ceec8610c85df0bf2d18a307a67f2ba080d",
+      "minimumActions": 12,
+      "shortestSolution": [
+        "sets",
+        "banka",
+        "add1",
+        "snack1",
+        "snack2",
+        "banka",
+        "bankb",
+        "setu",
+        "snack3",
+        "bankb",
+        "mulm",
+        "boss"
+      ],
+      "minimumSteps": 33,
+      "stepOptimalSolution": [
+        "sets",
+        "banka",
+        "add1",
+        "snack1",
+        "snack2",
+        "banka",
+        "bankb",
+        "setu",
+        "snack3",
+        "bankb",
+        "mulm",
+        "boss"
+      ],
+      "requiredRespawns": 2,
+      "criticalTileIds": [
+        "sets",
+        "banka",
+        "add1",
+        "snack1",
+        "snack2",
+        "bankb",
+        "setu",
+        "snack3",
+        "mulm"
+      ]
+    },
+    "sample-hard-3": {
+      "levelId": "sample-hard-3",
+      "contentHash": "4c9db38146181d817b8bf738eed86568e45dfc19881206afc8381d848088d18c",
+      "minimumActions": 12,
+      "shortestSolution": [
+        "sets",
+        "banka",
+        "add1",
+        "snack1",
+        "snack2",
+        "banka",
+        "bankb",
+        "setu",
+        "snack3",
+        "bankb",
+        "mulm",
+        "boss"
+      ],
+      "minimumSteps": 33,
+      "stepOptimalSolution": [
+        "sets",
+        "banka",
+        "add1",
+        "snack1",
+        "snack2",
+        "banka",
+        "bankb",
+        "setu",
+        "snack3",
+        "bankb",
+        "mulm",
+        "boss"
+      ],
+      "requiredRespawns": 2,
+      "criticalTileIds": [
+        "sets",
+        "banka",
+        "add1",
+        "snack1",
+        "snack2",
+        "bankb",
+        "setu",
+        "snack3",
+        "mulm"
+      ]
+    },
+    "sample-hard-4": {
+      "levelId": "sample-hard-4",
+      "contentHash": "3c6d1b7602d3eb768d154d83cdbc7d810929a20d80f4cac25061a35ef9630e03",
+      "minimumActions": 12,
+      "shortestSolution": [
+        "sets",
+        "banka",
+        "add1",
+        "snack1",
+        "snack2",
+        "banka",
+        "bankb",
+        "setu",
+        "snack3",
+        "bankb",
+        "mulm",
+        "boss"
+      ],
+      "minimumSteps": 33,
+      "stepOptimalSolution": [
+        "sets",
+        "banka",
+        "add1",
+        "snack1",
+        "snack2",
+        "banka",
+        "bankb",
+        "setu",
+        "snack3",
+        "bankb",
+        "mulm",
+        "boss"
+      ],
+      "requiredRespawns": 2,
+      "criticalTileIds": [
+        "sets",
+        "banka",
+        "add1",
+        "snack1",
+        "snack2",
+        "bankb",
+        "setu",
+        "snack3",
+        "mulm"
+      ]
+    },
+    "sample-hard-5": {
+      "levelId": "sample-hard-5",
+      "contentHash": "452ec675d0a65dd362893937831a2a1d3952c477caf1928a3660f99b92695cb3",
+      "minimumActions": 12,
+      "shortestSolution": [
+        "add1",
+        "snack1",
+        "snack2",
+        "banka",
+        "sets",
+        "bankb",
+        "banka",
+        "setu",
+        "snack3",
+        "banka",
+        "mulm",
+        "boss"
+      ],
+      "minimumSteps": 31,
+      "stepOptimalSolution": [
+        "add1",
+        "snack1",
+        "snack2",
+        "banka",
+        "sets",
+        "bankb",
+        "banka",
+        "setu",
+        "snack3",
+        "banka",
+        "mulm",
+        "boss"
+      ],
+      "requiredRespawns": 2,
+      "criticalTileIds": [
+        "add1",
+        "snack1",
+        "snack2",
+        "banka",
+        "sets",
+        "bankb",
+        "setu",
+        "snack3",
+        "mulm"
+      ]
+    }
+  }
+}

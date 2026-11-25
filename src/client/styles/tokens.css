@@ -1,0 +1,101 @@
+:root,
+:root[data-theme='paper'] {
+  color-scheme: light;
+
+  --color-bg: #f5f7f8;
+  --color-difficulty-easy: #367a5e;
+  --color-difficulty-medium: #346b9f;
+  --color-difficulty-hard: #662d69;
+  --color-surface: #ffffff;
+  --color-ink: #17202a;
+  --color-ink-soft: #5c6670;
+  --color-accent: #175bcc;
+  --color-on-accent: #ffffff;
+  --color-focus: #175bcc;
+  --color-wall: #34434c;
+  --color-wall-edge: #3e4e58;
+  --color-floor: #e8edf0;
+  --color-floor-edge: #cbd3d9;
+  --color-enemy: #f6c79a;
+  --color-enemy-edge: #8a7562;
+  --color-boss: #e1b7e4;
+  --color-boss-edge: #662d69;
+  --color-add: #c5ebd5;
+  --color-add-edge: #367a5e;
+  --color-multiply: #c5dff6;
+  --color-multiply-edge: #346b9f;
+  --color-player: #ffffff;
+  --color-player-edge: #137260;
+  --color-player-ink: #17202a;
+  --color-path: rgb(23 92 204 / 0.35);
+  --color-spent-life: #beb6a8;
+  --color-risk: #b3392c;
+  --color-risk-surface: #f7d9d4;
+  --color-win: #2c6e49;
+  --color-win-surface: #d9efe2;
+  --color-notice: #8a6d1a;
+  --color-notice-surface: #f5ecd0;
+  --color-backdrop: rgb(12 18 28 / 0.55);
+  --color-shadow: rgb(23 32 42 / 0.25);
+  --color-selected-ring: var(--color-ink);
+  --color-nav-selected: rgb(23 91 204 / 0.12);
+  --color-progress-track: #ddd9cd;
+  --radius-cell: 10px;
+  --radius-panel: 14px;
+  --shadow-panel: 0 2px 10px rgb(23 32 42 / 0.08);
+
+  /* Layout measures (Phase 1): bounded content widths and spacing. */
+  --measure-library: 75rem;
+  --measure-settings: 42rem;
+  --measure-game: 75rem;
+  --measure-prose: 65ch;
+  --space-screen: 16px;
+  --space-grid: 12px;
+  --size-nav-rail: 14rem;
+  --size-inspector: 20rem;
+  --size-touch-target: 44px;
+}
+
+:root[data-theme='midnight'] {
+  color-scheme: dark;
+
+  --color-bg: #10151d;
+  --color-difficulty-easy: #99dfbb;
+  --color-difficulty-medium: #acd6ff;
+  --color-difficulty-hard: #e4b4f0;
+  --color-surface: #1c2531;
+  --color-ink: #f3f6fc;
+  --color-ink-soft: #bac6d5;
+  --color-accent: #9dc4ff;
+  --color-on-accent: #10223d;
+  --color-focus: #ffda75;
+  --color-wall: #080c12;
+  --color-wall-edge: #344253;
+  --color-floor: #263342;
+  --color-floor-edge: #526378;
+  --color-enemy: #623d24;
+  --color-enemy-edge: #edbb85;
+  --color-boss: #54305e;
+  --color-boss-edge: #e4b4f0;
+  --color-add: #214e3e;
+  --color-add-edge: #99dfbb;
+  --color-multiply: #234768;
+  --color-multiply-edge: #acd6ff;
+  --color-player: #f3f6fc;
+  --color-player-edge: #9dc4ff;
+  --color-player-ink: #10223d;
+  --color-path: rgb(157 196 255 / 0.4);
+  --color-spent-life: #5a6a7c;
+  --color-risk: #ff9d8f;
+  --color-risk-surface: #4a2723;
+  --color-win: #8fd9b0;
+  --color-win-surface: #1d3a2c;
+  --color-notice: #e8c96a;
+  --color-notice-surface: #3a3320;
+  --color-backdrop: rgb(0 0 0 / 0.7);
+  --color-shadow: rgb(0 0 0 / 0.5);
+  --color-selected-ring: var(--color-ink);
+  --color-nav-selected: rgb(157 196 255 / 0.16);
+  --color-progress-track: #263342;
+  --shadow-panel: 0 2px 10px rgb(0 0 0 / 0.35);
+}

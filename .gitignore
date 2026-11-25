@@ -1,0 +1,31 @@
+# Dependencies and build output
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Test and tool output
+coverage/
+playwright-report/
+test-results/
+.eslintcache
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Private release season and generator checkpoints. Never commit these.
+/season/
+/.work/
+
+# Local notes, screenshots and editor or agent settings
+/.shots/
+/.vscode/
+/.claude/
+/.codemie/
+/HANDOVER.md
+/SUBMISSION.md

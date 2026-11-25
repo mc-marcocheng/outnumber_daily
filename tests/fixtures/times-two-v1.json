@@ -1,0 +1,15 @@
+{
+  "formatVersion": 1,
+  "id": "030-times-two",
+  "revision": 2,
+  "title": "Times Three",
+  "width": 3,
+  "terrain": ["...", "..."],
+  "startCell": 3,
+  "startValue": "3",
+  "spareLives": 0,
+  "tiles": [
+    { "id": "triple", "kind": "multiply", "cell": 4, "amount": "3" },
+    { "id": "boss", "kind": "boss", "cell": 5, "value": "8" }
+  ]
+}

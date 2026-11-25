@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "id": "031-order-matters",
+  "revision": 1,
+  "title": "Order Matters",
+  "width": 5,
+  "terrain": [".....", ".....", "....."],
+  "startCell": 7,
+  "startValue": "5",
+  "spareLives": 0,
+  "tiles": [
+    { "id": "soak", "kind": "enemy", "cell": 6, "value": "3" },
+    { "id": "double", "kind": "multiply", "cell": 8, "amount": "2" },
+    { "id": "triple", "kind": "multiply", "cell": 2, "amount": "3" },
+    { "id": "gulp", "kind": "enemy", "cell": 12, "value": "20" },
+    { "id": "boss", "kind": "boss", "cell": 14, "value": "80" }
+  ]
+}

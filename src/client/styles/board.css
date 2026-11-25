@@ -1,0 +1,301 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), var(--cell));
+  grid-auto-rows: var(--cell);
+}
+
+.cell {
+  position: relative;
+  width: var(--cell);
+  height: var(--cell);
+  display: grid;
+  place-items: center;
+}
+
+.cell--wall {
+  background: var(--color-wall);
+  border: 1px solid var(--color-wall-edge);
+}
+
+.cell--floor {
+  background: var(--color-floor);
+  border: 1px solid var(--color-floor-edge);
+}
+
+.cell--path::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-path);
+}
+
+.number {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Long values shrink the text without shrinking the touch target. */
+.number--wide {
+  font-size: 0.72em;
+}
+
+.number--huge {
+  font-size: 0.55em;
+  letter-spacing: -0.02em;
+}
+
+.tile {
+  border: 2px solid var(--color-enemy-edge);
+  border-radius: var(--radius-cell);
+  background: var(--color-enemy);
+  color: var(--color-ink);
+  font-weight: 750;
+  font-size: clamp(12px, calc(var(--cell) * 0.28), 21px);
+  padding: 0;
+  cursor: pointer;
+}
+
+.tile--boss {
+  border: 3px double var(--color-boss-edge);
+  background: var(--color-boss);
+}
+
+.tile--add,
+.tile--subtract {
+  border-color: var(--color-add-edge);
+  background: var(--color-add);
+}
+
+.tile--multiply,
+.tile--divide {
+  border-color: var(--color-multiply-edge);
+  background: var(--color-multiply);
+}
+
+.tile--set {
+  border-color: var(--color-add-edge);
+  background: var(--color-add);
+}
+
+/*
+ * Window enemy badge: the exact absorption interval, shown as text so
+ * the rule is readable without color. Sits under the enemy value.
+ */
+.window-badge {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  bottom: 3px;
+  font-size: clamp(9px, calc(var(--cell) * 0.19), 13px);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.tile--selected {
+  box-shadow: inset 0 0 0 3px var(--color-selected-ring);
+}
+
+/* Reduced-motion outcome feedback: a brief static outline. */
+.tile--flash {
+  box-shadow: inset 0 0 0 3px var(--color-focus);
+}
+
+.tile--unreachable {
+  filter: saturate(0.45);
+  opacity: 0.75;
+}
+
+/*
+ * Non-color reachability cue. Saturation reduction is invisible in the
+ * high-contrast theme (pure black/white tiles), so blocked tiles also
+ * carry a dashed inset outline.
+ */
+.tile--unreachable::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px dashed var(--color-ink-soft);
+  border-radius: inherit;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.tile:disabled {
+  cursor: default;
+}
+
+.player {
+  position: relative;
+  z-index: 1;
+  width: 80%;
+  height: 80%;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-player);
+  border: 3px solid var(--color-player-edge);
+  color: var(--color-player-ink);
+  font-weight: 800;
+  font-size: clamp(11px, calc(var(--cell) * 0.26), 20px);
+}
+
+/* Snoovatar fills the token; the value stays legible in a corner pill. */
+.player-avatar {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.player-value {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  min-width: 1.4em;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--color-player);
+  border: 1px solid var(--color-player-edge);
+  color: var(--color-player-ink);
+  font-size: clamp(9px, calc(var(--cell) * 0.2), 14px);
+  line-height: 1.5;
+  text-align: center;
+}
+
+/*
+ * Sibling of the board: --cell is inherited from .board-wrap, which
+ * carries the shared board variables.
+ */
+.player-overlay {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-player);
+  border: 3px solid var(--color-player-edge);
+  color: var(--color-player-ink);
+  font-weight: 800;
+  font-size: clamp(11px, calc(var(--cell) * 0.26), 20px);
+  pointer-events: none;
+  transition-property: left, top, opacity;
+  transition-timing-function: linear;
+}
+
+.player-overlay--hidden {
+  opacity: 0;
+}
+
+/*
+ * Outcome juice on the moving token. Applied only while a frame is
+ * revealed; the reduced-motion path never builds a timeline, so these
+ * never run there. Transform/opacity only — left/top stay on the
+ * existing walk transition.
+ */
+@keyframes juice-absorb {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.28);
+    filter: brightness(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes juice-win {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 var(--color-player-edge);
+  }
+  45% {
+    transform: scale(1.35);
+    box-shadow: 0 0 0 12px transparent;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@keyframes juice-bank {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.12);
+    filter: brightness(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes juice-respawn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.3;
+  }
+  60% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes juice-loss {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.4) rotate(20deg);
+  }
+}
+
+.player-overlay--juice-absorb {
+  animation: juice-absorb 320ms ease-out;
+}
+.player-overlay--juice-win {
+  animation: juice-win 420ms ease-out;
+}
+.player-overlay--juice-bank {
+  animation: juice-bank 260ms ease-out;
+}
+.player-overlay--juice-respawn {
+  animation: juice-respawn 300ms ease-out;
+}
+.player-overlay--juice-loss {
+  animation: juice-loss 240ms ease-in;
+}
+
+/*
+ * Corner markers: stroke SVG in the original glyph footprints. The
+ * marks stay decorative; tile accessible names are untouched.
+ */
+.start-mark,
+.boss-mark {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  color: var(--color-ink-soft);
+}
+
+.start-mark svg,
+.boss-mark svg {
+  display: block;
+  width: 13px;
+  height: 13px;
+}

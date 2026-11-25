@@ -1,0 +1,16 @@
+{
+  "formatVersion": 1,
+  "id": "fixture-banking-tutorial",
+  "revision": 1,
+  "title": "Banking tutorial (frozen fixture)",
+  "width": 5,
+  "terrain": ["##.##", "##.##", "....."],
+  "startCell": 12,
+  "startValue": "4",
+  "spareLives": 1,
+  "tiles": [
+    { "id": "bank", "kind": "enemy", "cell": 2, "value": "7" },
+    { "id": "triple", "kind": "multiply", "cell": 10, "amount": "3" },
+    { "id": "boss", "kind": "boss", "cell": 14, "value": "20" }
+  ]
+}

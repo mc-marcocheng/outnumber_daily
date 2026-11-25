@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Outnumber local puzzles</title>
+    <style>
+      body {
+        margin: 0;
+        background: #f1f5f4;
+        color: #172e29;
+        font:
+          15px Georgia,
+          serif;
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+      }
+      header {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 10px 16px;
+        border-bottom: 1px solid #aac2b8;
+        background: #fff;
+      }
+      h1 {
+        font-size: 20px;
+        margin: 0 auto 0 0;
+      }
+      select,
+      button {
+        font: inherit;
+        padding: 7px;
+        border: 1px solid #94aaa1;
+        border-radius: 4px;
+        background: white;
+        color: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.4;
+      }
+      iframe {
+        border: 0;
+        width: 100%;
+        flex: 1;
+        min-height: 0;
+        background: #fff;
+      }
+      #identity {
+        font-size: 13px;
+        width: 100%;
+        overflow-wrap: anywhere;
+      }
+      label {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Outnumber <small>local</small></h1>
+      <label
+        >Difficulty
+        <select id="difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select></label
+      ><button
+        id="previous"
+        aria-label="Previous puzzle"
+        title="Previous puzzle"
+      >
+        &larr;</button
+      ><label
+        >Puzzle
+        <select id="puzzle"></select></label
+      ><button id="next" aria-label="Next puzzle" title="Next puzzle">
+        &rarr;</button
+      ><output id="identity"></output>
+    </header>
+    <iframe id="game" title="Outnumber puzzle"></iframe>
+    <script type="module" src="/local-preview.js"></script>
+  </body>
+</html>

@@ -1,0 +1,318 @@
+:root[data-theme][data-palette]:not([data-palette='classic']) {
+  --color-bg: var(--palette-bg);
+  --color-difficulty-easy: var(--palette-difficulty-easy);
+  --color-difficulty-medium: var(--palette-difficulty-medium);
+  --color-difficulty-hard: var(--palette-difficulty-hard);
+  --color-surface: var(--palette-surface);
+  --color-ink: var(--palette-ink);
+  --color-ink-soft: var(--palette-muted);
+  --color-accent: var(--palette-accent);
+  --color-on-accent: var(--palette-on-accent);
+  --color-focus: var(--palette-focus);
+  --color-wall: var(--palette-wall);
+  --color-wall-edge: var(--palette-border);
+  --color-floor: var(--palette-floor);
+  --color-floor-edge: var(--palette-border);
+  --color-enemy: color-mix(
+    in srgb,
+    var(--palette-enemy) 12%,
+    var(--palette-surface)
+  );
+  --color-enemy-edge: var(--palette-enemy);
+  --color-boss: color-mix(
+    in srgb,
+    var(--palette-boss) 12%,
+    var(--palette-surface)
+  );
+  --color-boss-edge: var(--palette-boss);
+  --color-add: color-mix(
+    in srgb,
+    var(--palette-add) 12%,
+    var(--palette-surface)
+  );
+  --color-add-edge: var(--palette-add);
+  --color-multiply: color-mix(
+    in srgb,
+    var(--palette-multiply) 12%,
+    var(--palette-surface)
+  );
+  --color-multiply-edge: var(--palette-multiply);
+  --color-player: var(--palette-ink);
+  --color-player-edge: var(--palette-accent);
+  --color-player-ink: var(--palette-surface);
+  --color-path: color-mix(in srgb, var(--palette-accent) 35%, transparent);
+  --color-spent-life: var(--palette-muted);
+  --color-risk: var(--palette-risk);
+  --color-risk-surface: color-mix(
+    in srgb,
+    var(--palette-risk) 12%,
+    var(--palette-surface)
+  );
+  --color-win: var(--palette-add);
+  --color-win-surface: color-mix(
+    in srgb,
+    var(--palette-add) 12%,
+    var(--palette-surface)
+  );
+  --color-notice: var(--palette-notice);
+  --color-notice-surface: color-mix(
+    in srgb,
+    var(--palette-notice) 12%,
+    var(--palette-surface)
+  );
+  --color-backdrop: color-mix(in srgb, var(--palette-wall) 80%, transparent);
+  --color-shadow: color-mix(in srgb, var(--palette-ink) 20%, transparent);
+  --color-selected-ring: var(--color-ink);
+  --color-nav-selected: color-mix(
+    in srgb,
+    var(--palette-accent) 12%,
+    var(--palette-surface)
+  );
+  --color-progress-track: var(--palette-floor);
+  --shadow-panel: 0 2px 10px var(--color-shadow);
+}
+
+:root[data-theme='paper'][data-palette='github-light'] {
+  --palette-difficulty-easy: #116329;
+  --palette-difficulty-medium: #0550ae;
+  --palette-difficulty-hard: #8250df;
+  --palette-bg: #f6f8fa;
+  --palette-surface: #ffffff;
+  --palette-ink: #1f2328;
+  --palette-muted: #59636e;
+  --palette-accent: #0969da;
+  --palette-on-accent: #ffffff;
+  --palette-focus: #0969da;
+  --palette-wall: #32383f;
+  --palette-floor: #eaeef2;
+  --palette-border: #8c959f;
+  --palette-enemy: #953800;
+  --palette-boss: #8250df;
+  --palette-add: #116329;
+  --palette-multiply: #0550ae;
+  --palette-risk: #b4232c;
+  --palette-notice: #735c0f;
+}
+
+:root[data-theme='paper'][data-palette='solarized-light'] {
+  --palette-difficulty-easy: #47731b;
+  --palette-difficulty-medium: #176da0;
+  --palette-difficulty-hard: #8b3e78;
+  --palette-bg: #fdf6e3;
+  --palette-surface: #fffbef;
+  --palette-ink: #073642;
+  --palette-muted: #52676c;
+  --palette-accent: #176da0;
+  --palette-on-accent: #ffffff;
+  --palette-focus: #a33b00;
+  --palette-wall: #073642;
+  --palette-floor: #eee8d5;
+  --palette-border: #8c8c75;
+  --palette-enemy: #a44716;
+  --palette-boss: #8b3e78;
+  --palette-add: #47731b;
+  --palette-multiply: #176da0;
+  --palette-risk: #b33332;
+  --palette-notice: #806600;
+}
+
+:root[data-theme='paper'][data-palette='rose-pine-dawn'] {
+  --palette-difficulty-easy: #35735e;
+  --palette-difficulty-medium: #286983;
+  --palette-difficulty-hard: #805793;
+  --palette-bg: #faf4ed;
+  --palette-surface: #fffaf3;
+  --palette-ink: #403c55;
+  --palette-muted: #686379;
+  --palette-accent: #9c3560;
+  --palette-on-accent: #ffffff;
+  --palette-focus: #286983;
+  --palette-wall: #464159;
+  --palette-floor: #eee4e1;
+  --palette-border: #9a8d98;
+  --palette-enemy: #985225;
+  --palette-boss: #805793;
+  --palette-add: #35735e;
+  --palette-multiply: #286983;
+  --palette-risk: #a33651;
+  --palette-notice: #805e16;
+}
+
+:root[data-theme='paper'][data-palette='catppuccin-latte'] {
+  --palette-difficulty-easy: #327522;
+  --palette-difficulty-medium: #1858c9;
+  --palette-difficulty-hard: #8839a9;
+  --palette-bg: #eff1f5;
+  --palette-surface: #ffffff;
+  --palette-ink: #4c4f69;
+  --palette-muted: #62657b;
+  --palette-accent: #1e66f5;
+  --palette-on-accent: #ffffff;
+  --palette-focus: #8839a9;
+  --palette-wall: #4c4f69;
+  --palette-floor: #dce0e8;
+  --palette-border: #8c8fa1;
+  --palette-enemy: #a44913;
+  --palette-boss: #8839a9;
+  --palette-add: #327522;
+  --palette-multiply: #1858c9;
+  --palette-risk: #bb2341;
+  --palette-notice: #805b08;
+}
+
+:root[data-theme='paper'][data-palette='high-contrast-light'] {
+  --palette-difficulty-easy: #00592c;
+  --palette-difficulty-medium: #003bb3;
+  --palette-difficulty-hard: #710099;
+  --palette-bg: #ffffff;
+  --palette-surface: #ffffff;
+  --palette-ink: #000000;
+  --palette-muted: #202020;
+  --palette-accent: #003bb3;
+  --palette-on-accent: #ffffff;
+  --palette-focus: #8a0055;
+  --palette-wall: #000000;
+  --palette-floor: #ffffff;
+  --palette-border: #000000;
+  --palette-enemy: #822d00;
+  --palette-boss: #710099;
+  --palette-add: #00592c;
+  --palette-multiply: #003bb3;
+  --palette-risk: #a00000;
+  --palette-notice: #624700;
+  --shadow-panel: none;
+}
+
+:root[data-theme='midnight'][data-palette='github-dark'] {
+  --palette-difficulty-easy: #7ee787;
+  --palette-difficulty-medium: #79c0ff;
+  --palette-difficulty-hard: #d2a8ff;
+  --palette-bg: #0d1117;
+  --palette-surface: #161b22;
+  --palette-ink: #f0f6fc;
+  --palette-muted: #b1bac4;
+  --palette-accent: #79c0ff;
+  --palette-on-accent: #0d1117;
+  --palette-focus: #e3b341;
+  --palette-wall: #010409;
+  --palette-floor: #21262d;
+  --palette-border: #6e7681;
+  --palette-enemy: #ffa657;
+  --palette-boss: #d2a8ff;
+  --palette-add: #7ee787;
+  --palette-multiply: #79c0ff;
+  --palette-risk: #ff9a97;
+  --palette-notice: #e3b341;
+}
+
+:root[data-theme='midnight'][data-palette='dracula'] {
+  --palette-difficulty-easy: #50fa7b;
+  --palette-difficulty-medium: #8be9fd;
+  --palette-difficulty-hard: #ff79c6;
+  --palette-bg: #282a36;
+  --palette-surface: #303341;
+  --palette-ink: #f8f8f2;
+  --palette-muted: #c4c7df;
+  --palette-accent: #bd93f9;
+  --palette-on-accent: #211b2e;
+  --palette-focus: #f1fa8c;
+  --palette-wall: #191a23;
+  --palette-floor: #3a3d50;
+  --palette-border: #858aa5;
+  --palette-enemy: #ffb86c;
+  --palette-boss: #ff79c6;
+  --palette-add: #50fa7b;
+  --palette-multiply: #8be9fd;
+  --palette-risk: #ff9393;
+  --palette-notice: #f1fa8c;
+}
+
+:root[data-theme='midnight'][data-palette='nord'] {
+  --palette-difficulty-easy: #a3be8c;
+  --palette-difficulty-medium: #8fc5e8;
+  --palette-difficulty-hard: #d5add0;
+  --palette-bg: #2e3440;
+  --palette-surface: #353d4c;
+  --palette-ink: #eceff4;
+  --palette-muted: #c4ccda;
+  --palette-accent: #88c0d0;
+  --palette-on-accent: #202830;
+  --palette-focus: #ebcb8b;
+  --palette-wall: #1d232d;
+  --palette-floor: #414c5e;
+  --palette-border: #8491a8;
+  --palette-enemy: #edb58f;
+  --palette-boss: #d5add0;
+  --palette-add: #a3be8c;
+  --palette-multiply: #8fc5e8;
+  --palette-risk: #f2a2a9;
+  --palette-notice: #ebcb8b;
+}
+
+:root[data-theme='midnight'][data-palette='tokyo-night'] {
+  --palette-difficulty-easy: #9ece6a;
+  --palette-difficulty-medium: #7dcfff;
+  --palette-difficulty-hard: #bb9af7;
+  --palette-bg: #1a1b26;
+  --palette-surface: #24283b;
+  --palette-ink: #dce4ff;
+  --palette-muted: #a9b5d8;
+  --palette-accent: #7aa2f7;
+  --palette-on-accent: #151b2d;
+  --palette-focus: #e0af68;
+  --palette-wall: #10111a;
+  --palette-floor: #30374f;
+  --palette-border: #737fa7;
+  --palette-enemy: #ffb380;
+  --palette-boss: #bb9af7;
+  --palette-add: #9ece6a;
+  --palette-multiply: #7dcfff;
+  --palette-risk: #ff9eb1;
+  --palette-notice: #e0af68;
+}
+
+:root[data-theme='midnight'][data-palette='catppuccin-mocha'] {
+  --palette-difficulty-easy: #a6e3a1;
+  --palette-difficulty-medium: #89dceb;
+  --palette-difficulty-hard: #cba6f7;
+  --palette-bg: #1e1e2e;
+  --palette-surface: #272739;
+  --palette-ink: #cdd6f4;
+  --palette-muted: #b5bfdc;
+  --palette-accent: #89b4fa;
+  --palette-on-accent: #181825;
+  --palette-focus: #f9e2af;
+  --palette-wall: #11111b;
+  --palette-floor: #36364b;
+  --palette-border: #7f849c;
+  --palette-enemy: #fab387;
+  --palette-boss: #cba6f7;
+  --palette-add: #a6e3a1;
+  --palette-multiply: #89dceb;
+  --palette-risk: #f38ba8;
+  --palette-notice: #f9e2af;
+}
+
+:root[data-theme='midnight'][data-palette='high-contrast-dark'] {
+  --palette-difficulty-easy: #00ff99;
+  --palette-difficulty-medium: #00ffff;
+  --palette-difficulty-hard: #ffff00;
+  --palette-bg: #000000;
+  --palette-surface: #000000;
+  --palette-ink: #ffffff;
+  --palette-muted: #ffffff;
+  --palette-accent: #ffff00;
+  --palette-on-accent: #000000;
+  --palette-focus: #00ffff;
+  --palette-wall: #000000;
+  --palette-floor: #171717;
+  --palette-border: #ffffff;
+  --palette-enemy: #ffffff;
+  --palette-boss: #ffff00;
+  --palette-add: #00ff99;
+  --palette-multiply: #00ffff;
+  --palette-risk: #ff8888;
+  --palette-notice: #ffff00;
+  --color-selected-ring: var(--color-focus);
+  --shadow-panel: none;
+}

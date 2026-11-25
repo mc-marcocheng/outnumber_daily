@@ -1,0 +1,275 @@
+.puzzle-archive {
+  width: 100%;
+  min-width: 0;
+  color: var(--color-ink);
+}
+
+.archive-navigation {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 8px;
+}
+
+.archive-month {
+  margin: 0;
+  text-align: center;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.puzzle-archive button {
+  color: var(--color-ink);
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid var(--color-floor-edge);
+  border-radius: 6px;
+  background: var(--color-surface);
+}
+
+.puzzle-archive button:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.puzzle-archive button:disabled {
+  cursor: default;
+  color: var(--color-ink-soft);
+}
+
+.puzzle-archive button:not(:disabled):hover {
+  background: var(--color-nav-selected);
+  border-color: var(--color-accent);
+}
+
+.archive-icon-button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+}
+
+.archive-icon-button:disabled {
+  opacity: 0.4;
+}
+
+.archive-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.archive-today {
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 6px 12px;
+}
+
+.archive-calendar {
+  container-type: inline-size;
+}
+
+.archive-weekdays,
+.archive-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.archive-weekdays {
+  margin-bottom: 6px;
+  color: var(--color-ink-soft);
+  text-align: center;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+}
+
+.archive-day,
+.archive-blank,
+.archive-skeleton {
+  min-width: 0;
+  height: auto;
+  min-height: 34px;
+  aspect-ratio: 1;
+}
+
+.archive-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 3px 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.archive-day-number {
+  font-size: 0.875rem;
+  line-height: 1.1;
+}
+
+.puzzle-archive .archive-day[aria-current='date'] {
+  border: 2px solid var(--color-selected-ring);
+  background: var(--color-nav-selected);
+  font-weight: 700;
+}
+
+.puzzle-archive .archive-day:disabled {
+  border-color: transparent;
+  background: var(--color-floor);
+  opacity: 0.55;
+}
+
+.archive-day-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 12px;
+  font-size: 0.625rem;
+  line-height: 1;
+  color: var(--color-win);
+}
+
+.archive-day-status svg {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+}
+
+@container (max-width: 320px) {
+  .archive-day {
+    gap: 1px;
+    padding: 1px 0;
+  }
+  .archive-day-number {
+    font-size: 0.75rem;
+  }
+  .archive-day-status {
+    gap: 1px;
+    height: 10px;
+    font-size: 0.5625rem;
+  }
+  .archive-day-status svg {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.archive-progress-dot {
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--color-ink);
+  border-radius: 3px;
+  background: var(--color-ink);
+}
+
+.archive-skeleton {
+  border-radius: 6px;
+  background: var(--color-floor);
+  animation: archive-pulse 1.4s ease-in-out infinite alternate;
+}
+
+.archive-error {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.archive-error p {
+  margin: 0 0 12px;
+}
+
+.archive-error button {
+  min-height: 44px;
+  padding: 6px 16px;
+}
+
+.archive-retention {
+  margin: 12px 0 0;
+  color: var(--color-ink-soft);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.archive-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@keyframes archive-pulse {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 360px) {
+  .archive-weekdays,
+  .archive-days {
+    gap: 2px;
+  }
+
+  .archive-day-status {
+    gap: 1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .archive-skeleton {
+    animation: none;
+  }
+}
+:root[data-motion='reduced'] .archive-skeleton {
+  animation: none;
+}
+@media (max-height: 600px) {
+  .archive-day,
+  .archive-blank,
+  .archive-skeleton {
+    max-height: 34px;
+  }
+  .archive-day {
+    gap: 0;
+    padding: 1px 0;
+    font-size: 0.75rem;
+  }
+  .archive-day-status {
+    height: 12px;
+    font-size: 0.55rem;
+  }
+  .archive-month {
+    font-size: 0.95rem;
+  }
+  .archive-navigation {
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+    gap: 4px;
+  }
+  .archive-icon-button {
+    width: 36px;
+    height: 36px;
+  }
+  .archive-toolbar {
+    gap: 4px;
+    margin: 8px 0;
+  }
+  .archive-today {
+    padding: 4px 8px;
+    font-size: 0.75rem !important;
+  }
+  .archive-retention {
+    margin-top: 6px;
+    font-size: 0.65rem;
+  }
+}

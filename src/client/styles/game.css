@@ -1,0 +1,222 @@
+/*
+ * Gameplay layout: named areas so optional children can never shift
+ * the board into the wrong row, plus the two-pane tablet/desktop
+ * breakpoint logic.
+ */
+
+/* Higher specificity than the generic `.screen { display: flex }`. */
+.screen.game-screen {
+  display: grid;
+  grid-template:
+    'header' auto
+    'setcontext' auto
+    'status' auto
+    'counter' auto
+    'board' minmax(0, 1fr)
+    'inspector' auto
+    'toolbar' auto
+    / minmax(0, 1fr);
+}
+
+.game-screen > .top-bar,
+.screen.game-screen > .top-bar {
+  grid-area: header;
+  max-width: none;
+}
+
+/* Active practice-set context line above the status row. */
+.practice-context {
+  grid-area: setcontext;
+  margin: 0;
+  padding: 0 16px 4px;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: var(--color-accent);
+}
+
+/* Opt-in live action counter against the certified minimum. */
+.practice-counter {
+  grid-area: counter;
+  margin: 0;
+  padding: 0 16px 6px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 650;
+  color: var(--color-ink-soft);
+}
+
+.game-status {
+  grid-area: status;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 0 16px 6px;
+  min-height: 40px;
+}
+
+.game-status > * {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.game-status .status-value {
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+
+.game-status .status-slot {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-floor-edge);
+}
+
+.game-status .status-label {
+  font-size: 0.78rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-soft);
+}
+
+.game-status .status-boss {
+  border-color: var(--color-boss-edge);
+}
+
+.game-status .status-lives {
+  gap: 4px;
+}
+
+.game-status .hearts {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.heart {
+  display: inline-flex;
+  color: var(--color-risk);
+}
+
+.heart--spent {
+  color: var(--color-spent-life);
+}
+
+.board-viewport {
+  grid-area: board;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding: 12px;
+  display: grid;
+  place-items: center;
+}
+
+.board-wrap {
+  position: relative;
+  flex: none;
+}
+
+.game-inspector {
+  grid-area: inspector;
+  min-width: 0;
+  /* Fit the interaction preview instead of clipping it behind the
+     confirm button: the panel grows with its content up to a ceiling,
+     and only very tall previews fall back to the internal scroll. */
+  block-size: auto;
+  min-height: 11rem;
+  max-height: 32dvh;
+  margin: 0 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.context-rules-link {
+  /* Own implicit grid row between inspector and toolbar; centered and
+     compact so it never competes with the preview for height. */
+  justify-content: center;
+  min-height: 36px;
+  margin: 0 12px;
+  padding: 4px 8px;
+}
+
+.game-toolbar {
+  grid-area: toolbar;
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 8px 16px 12px;
+}
+
+.toolbar-button {
+  min-height: 52px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border-radius: 12px;
+  border: 1px solid var(--color-floor-edge);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-weight: 650;
+  font-size: 0.8rem;
+  padding: 4px 0;
+}
+
+.toolbar-button svg {
+  display: block;
+  flex: none;
+}
+
+/* Wrapped groups keep their targets; labels never shrink them. */
+.toolbar {
+  grid-auto-columns: minmax(0, 1fr);
+}
+
+.toolbar-button:disabled {
+  opacity: 0.45;
+}
+
+/*
+ * Two-pane play: wide screens, landscape tablets, and the compact
+ * landscape condition. The DOM order (header, status, board,
+ * inspector, toolbar) is unchanged, so keyboard focus order matches
+ * the visual order in both layouts.
+ */
+@media (min-width: 960px),
+  (min-width: 768px) and (orientation: landscape),
+  (min-width: 640px) and (max-height: 600px) {
+  .screen.game-screen {
+    grid-template:
+      'header header' auto
+      'setcontext setcontext' auto
+      'status status' auto
+      'counter counter' auto
+      'board inspector' minmax(0, 1fr)
+      'board toolbar' auto
+      / minmax(0, 1fr) minmax(var(--size-inspector), 22rem);
+  }
+
+  .game-inspector {
+    block-size: auto;
+    min-height: 0;
+    /* No 32dvh ceiling here: the right pane owns the available height
+       and the preview copy scrolls internally. */
+    max-height: none;
+    margin: 8px 12px 8px 0;
+  }
+
+  .game-toolbar {
+    padding: 8px 12px 12px 0;
+  }
+}
