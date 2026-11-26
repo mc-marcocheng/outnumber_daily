@@ -658,3 +658,27 @@ summary:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+
+/*
+ * Line breaking for Chinese and Japanese. Strict line breaking keeps closing
+ * punctuation off the start of a line. Japanese breaks between phrases rather
+ * than inside words. Short headings balance their lines, and paragraphs avoid
+ * a lone character on the last line.
+ */
+:lang(zh),
+:lang(ja) {
+  line-break: strict;
+}
+:lang(ja) {
+  word-break: auto-phrase;
+}
+p,
+li,
+label {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}

@@ -92,10 +92,10 @@ export const tutorialCopy: Record<AppLocale, Record<string, string>> = {
   ja: {
     'tutorial.lesson.subtract.title': '引いて範囲に収める',
     'tutorial.lesson.subtract.description':
-      '− タイルは一度だけ引き算をします。結果は1以上が必要です。まず −4 を試しましょう。タイルは残り、歩数も増えません。+8、−4 の順で7にして、範囲が限られた敵を吸収しましょう。',
+      '−タイルは1回だけ引き算をします。結果は1以上でなければなりません。まず−4を試してみましょう。使えないときはタイルが残り、歩数も増えません。+8、−4の順に進んで7にし、範囲つきの敵を吸収しましょう。',
     'tutorial.lesson.divide.title': '割り切れる数にする',
     'tutorial.lesson.divide.description':
-      '÷ タイルは2以上の整数で一度だけ割ります。結果は整数が必要です。まず ÷2 を試しましょう。5は割り切れないので何も変わりません。+9、÷2 の順で7にして、範囲が限られた敵を吸収しましょう。',
+      '÷タイルは2以上の数で1回だけ割ります。結果は整数でなければなりません。まず÷2を試してみましょう。5は割り切れないので何も変わりません。+9、÷2の順に進んで7にし、範囲つきの敵を吸収しましょう。',
     'tutorial.brand': 'OUTNUMBER',
     'tutorial.breadcrumb': 'OUTNUMBER / チュートリアル',
     'tutorial.title': 'チュートリアル',
@@ -107,7 +107,7 @@ export const tutorialCopy: Record<AppLocale, Record<string, string>> = {
     'tutorial.practice': '練習',
     'tutorial.practiceLabel': '練習',
     'tutorial.progress': '{{current}} / {{total}}',
-    'tutorial.blocked': '別のオブジェクトが道をふさいでいます。',
+    'tutorial.blocked': 'ほかのタイルが道をふさいでいます。',
     'tutorial.lost':
       'ハートがなくなりました。「元に戻す」で別のルートを試せます。',
     'tutorial.complete': 'クリア！',
@@ -122,16 +122,16 @@ export const tutorialCopy: Record<AppLocale, Record<string, string>> = {
     'tutorial.replay': 'もう一度再生',
     'tutorial.lesson.walking.title': '道を見つける',
     'tutorial.lesson.walking.description':
-      '空いているマスをタップして移動します。オブジェクトは使うまで道をふさぎます。1マス移動するごとに1歩として数えます。「元に戻す」で歩数も戻ります。',
+      '空いているマスをタップすると移動します。タイルや敵は、使うまで道をふさぎます。1マス進むごとに1歩と数えます。「元に戻す」を使うと歩数も戻ります。',
     'tutorial.lesson.addition.title': '少し強くなる',
     'tutorial.lesson.addition.description':
-      '緑の + タイルは、一度だけ自分の数に加算します。勝つには、ボスの数より大きくなりましょう。',
+      '緑の+タイルに進むと、自分の数に足されます。使えるのは1回だけです。ボスより大きい数になれば勝ちです。',
     'tutorial.lesson.multiply.title': '順番が大事',
     'tutorial.lesson.multiply.description':
       '青いタイルは自分の数に掛け算をします。先に足してから掛けると、ボスより1大きい数になります。',
     'tutorial.lesson.set.title': '数を置き換える',
     'tutorial.lesson.set.description':
-      '= タイルは自分の数を表示された数に置き換えます。=6 を使い、吸収できる数の範囲が限られた敵に挑みましょう。',
+      '=タイルは自分の数を表示された数に置き換えます。=6を使って、範囲つきの敵を吸収できる数にしましょう。',
     'tutorial.lesson.combat.title': '吸収して強くなる',
     'tutorial.lesson.combat.description':
       '敵を吸収するには、敵より大きい数が必要です。吸収すると敵の数が自分の数に加わります。同じ数では負けます。',
@@ -149,13 +149,13 @@ export const tutorialCopy: Record<AppLocale, Record<string, string>> = {
       'まずボスか右端の空きマスをタップしてみましょう。+ タイルが唯一の道をふさいでいます。使うと通路が開きます。道がふさがれているときのタップでは歩数は増えません。',
     'tutorial.guided.page.0.title': 'あなた',
     'tutorial.guided.page.0.text':
-      'この顔があなたです。空きマスをタップすると移動し、オブジェクトをタップするとそこへ移動して使うか戦います。実際に移動したマスだけを歩数に数えます。',
-    'tutorial.guided.page.1.title': 'オブジェクトを回り込む',
+      'この顔があなたです。空いているマスをタップすると移動します。タイルや敵をタップすると、そこまで進んで使うか戦います。歩数に数えるのは、実際に進んだマスだけです。',
+    'tutorial.guided.page.1.title': 'タイルをよけて進む',
     'tutorial.guided.page.1.text':
-      '1マスの移動で1歩です。+ タイルが右の通路をふさいでいます。オブジェクトは使って消すまで通り抜けられません。',
+      '1マス進むと1歩です。+タイルが右の通路をふさいでいます。タイルは使って消すまで通り抜けられません。',
     'tutorial.guided.page.2.title': '足す',
     'tutorial.guided.page.2.text':
-      '+2 で3が5になります。計算タイルは一度使うと消え、通れるようになります。',
+      '+2で3が5になります。計算のタイルは1回使うと消え、通れるようになります。',
     'tutorial.guided.page.3.title': '掛ける',
     'tutorial.guided.page.3.text':
       '2を掛けると5が10になります。計算の順番を変えると結果も変わります。',
@@ -196,7 +196,7 @@ export const tutorialCopy: Record<AppLocale, Record<string, string>> = {
     'tutorial.practice': '练习',
     'tutorial.practiceLabel': '练习',
     'tutorial.progress': '{{current}} / {{total}}',
-    'tutorial.blocked': '其他物体挡住了路。',
+    'tutorial.blocked': '有其他东西挡住了路。',
     'tutorial.lost': '爱心已用完。撤销后可以尝试其他路线。',
     'tutorial.complete': '完成！',
     'tutorial.route': '路线',
@@ -237,10 +237,10 @@ export const tutorialCopy: Record<AppLocale, Record<string, string>> = {
       '先试着点击首领或最右侧的空格：+ 方块挡住了唯一的路。使用它就能打通走廊。点击被挡住的目标不会消耗步数。',
     'tutorial.guided.page.0.title': '你',
     'tutorial.guided.page.0.text':
-      '头像代表你。点击空地可以移动；点击物体会走过去并与它互动。只有实际走过的格子才计入步数。',
+      '头像代表你。点击空地可以移动；点击方块或敌人，会走过去使用它或和它战斗。只有实际走过的格子才计入步数。',
     'tutorial.guided.page.1.title': '绕过物体',
     'tutorial.guided.page.1.text':
-      '每走一格计为一步。+ 方块挡住了右侧走廊；物体在被消耗前无法穿过。',
+      '每走一格算一步。+ 方块挡住了右侧走廊；物体用掉之前不能穿过。',
     'tutorial.guided.page.2.title': '加法',
     'tutorial.guided.page.2.text':
       '+2 让3变成5。运算方块用过一次就会消失，留下可通行的空地。',
@@ -283,7 +283,7 @@ export const tutorialCopy: Record<AppLocale, Record<string, string>> = {
     'tutorial.practice': '練習',
     'tutorial.practiceLabel': '練習',
     'tutorial.progress': '{{current}} / {{total}}',
-    'tutorial.blocked': '其他物體擋住了路。',
+    'tutorial.blocked': '有其他東西擋住了路。',
     'tutorial.lost': '愛心已用完。復原後可以嘗試其他路線。',
     'tutorial.complete': '完成！',
     'tutorial.route': '路線',
@@ -324,10 +324,10 @@ export const tutorialCopy: Record<AppLocale, Record<string, string>> = {
       '先試著點選首領或最右側的空格：+ 方塊擋住了唯一的路。使用它就能打通走廊。點選被擋住的目標不會消耗步數。',
     'tutorial.guided.page.0.title': '你',
     'tutorial.guided.page.0.text':
-      '頭像代表你。點選空地可以移動；點選物體會走過去並與它互動。只有實際走過的格子才計入步數。',
+      '頭像代表你。點選空地可以移動；點選方塊或敵人，會走過去使用它或和它戰鬥。只有實際走過的格子才計入步數。',
     'tutorial.guided.page.1.title': '繞過物體',
     'tutorial.guided.page.1.text':
-      '每走一格計為一步。+ 方塊擋住了右側走廊；物體在被消耗前無法穿過。',
+      '每走一格算一步。+ 方塊擋住了右側走廊；物體用掉之前不能穿過。',
     'tutorial.guided.page.2.title': '加法',
     'tutorial.guided.page.2.text':
       '+2 讓3變成5。運算方塊用過一次就會消失，留下可通行的空地。',
