@@ -16,7 +16,7 @@ Vite and the local tools use `season/season.json` when it exists and fall back t
 
 ## Schedule
 
-Each difficulty serves one puzzle per UTC date, starting at `SEASON_ANCHOR` in `src/shared/season.ts`, and wraps around at the end of its pool. Pool order sets the date assignments: the puzzle for a date is the entry at its day number, counted from the anchor. Saved runs and leaderboards are keyed by date and difficulty, so a date that has been released must keep its puzzle. To change later dates, keep every pool's released entries in place and in order, and replace only the entries after them. Reordering or removing a released entry moves puzzles that players have already played.
+Each difficulty serves one puzzle per UTC date, starting at `SEASON_ANCHOR` in `src/shared/season.ts`, and wraps around at the end of its pool. Pool order sets the date assignments: the puzzle for a date is the entry at its day number, counted from the anchor. Saved runs and leaderboards are keyed by date and difficulty, so a date that has been released must keep its puzzle. To change later dates, keep every pool's released entries in place and in order, and replace only the entries after them. Reordering or removing a released entry moves puzzles that players have already played. Before the game is public, a season can be replaced outright.
 
 ## Board rules for the release season
 
