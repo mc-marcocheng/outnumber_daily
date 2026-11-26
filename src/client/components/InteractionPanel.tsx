@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import type { InteractionResult, Tile } from '../../shared/game/model';
 import { formatInteractionFailure } from './interaction-failure';
+import { translator } from './i18n-types';
 
 type Selection = {
   tile: Tile;
@@ -44,7 +45,7 @@ export function InteractionPanel({
         <div className="preview-copy">
           <p className="panel-title">{titleFor(t, tile, result)}</p>
           <p className="panel-line panel-line--warn">
-            {formatInteractionFailure(t, result.reason)}
+            {formatInteractionFailure(translator(t), result.reason)}
           </p>
         </div>
       </div>

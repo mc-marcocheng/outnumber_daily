@@ -47,6 +47,7 @@ import { Leaderboard } from '../components/Leaderboard';
 import { UndoIcon, RestartIcon } from '../components/icons';
 import { formatAnnouncement } from '../components/game-event-announcement';
 import { formatInteractionFailure } from '../components/interaction-failure';
+import { translator } from '../components/i18n-types';
 import { useInteractionAnimation } from '../presentation/useInteractionAnimation';
 import { useMediaQuery } from '../app/useMediaQuery';
 import { useDailyGame } from '../hooks/useDailyGame';
@@ -169,7 +170,8 @@ function DailySession({
 
   const animation = useInteractionAnimation({
     reducedMotion,
-    onSettled: (event) => setAnnouncement(formatAnnouncement(t, event)),
+    onSettled: (event) =>
+      setAnnouncement(formatAnnouncement(translator(t), event)),
   });
   const refreshOnFocus = useEffectEvent(() => {
     if (!savingRef.current && !animation.busyRef.current && !game.loading)
@@ -462,7 +464,7 @@ function DailySession({
           {signedOut
             ? t('ui.signInToSave')
             : blocked
-              ? formatInteractionFailure(t, failureReason)
+              ? formatInteractionFailure(translator(t), failureReason)
               : saveError ||
                 (completion.failed
                   ? t('ui.verifyError')

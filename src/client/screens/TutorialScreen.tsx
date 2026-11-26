@@ -30,6 +30,7 @@ import { AppDialog } from '../components/AppDialog';
 import { RoutePlayback } from '../tutorials/RoutePlayback';
 import { playSoundEffect, unlockSoundEffects } from '../app/sound-effects';
 import { formatInteractionFailure } from '../components/interaction-failure';
+import { translator } from '../components/i18n-types';
 import { formatAnnouncement } from '../components/game-event-announcement';
 
 export function TutorialScreen({
@@ -54,7 +55,8 @@ export function TutorialScreen({
   const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
   const animation = useInteractionAnimation({
     reducedMotion,
-    onSettled: (event) => setAnnouncement(formatAnnouncement(t, event)),
+    onSettled: (event) =>
+      setAnnouncement(formatAnnouncement(translator(t), event)),
   });
   const guided = active === -1;
   const lesson = active !== null && active >= 0 ? lessons[active] : undefined;
@@ -231,7 +233,11 @@ export function TutorialScreen({
             />
             <p className="board-feedback" role="status">
               {blocked
-                ? formatInteractionFailure(t, failureReason, 'tutorial.blocked')
+                ? formatInteractionFailure(
+                    translator(t),
+                    failureReason,
+                    'tutorial.blocked'
+                  )
                 : !guided && state.phase === 'lost'
                   ? t('tutorial.lost')
                   : !guided && state.phase === 'won'
