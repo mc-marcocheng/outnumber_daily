@@ -4,6 +4,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import { GameBoard } from '../src/client/components/GameBoard';
 import { InteractionPanel } from '../src/client/components/InteractionPanel';
+import type { TranslationFunction } from '../src/client/components/i18n-types';
 import { formatAnnouncement } from '../src/client/components/game-event-announcement';
 import { formatInteractionFailure } from '../src/client/components/interaction-failure';
 import { buildCertificateHints } from '../src/client/hooks/useCertificateHints';
@@ -15,6 +16,9 @@ import type {
   Level,
   Tile,
 } from '../src/shared/game/model';
+
+const translate: TranslationFunction = (key, options) =>
+  i18n.t(key, { ...options });
 
 const cases = [
   {
@@ -136,12 +140,12 @@ describe('client arithmetic presentation', () => {
             },
           })
         );
-        const failure = formatInteractionFailure(i18n.t, operation.reason);
+        const failure = formatInteractionFailure(translate, operation.reason);
         expect(panel.textContent).toContain(failure);
         expect(panel.querySelector('button')).toBeNull();
         expect(failure).not.toMatch(/^game\./);
         expect(failure).not.toBe(i18n.t('game.blocked'));
-        expect(formatAnnouncement(i18n.t, event)).toBe(
+        expect(formatAnnouncement(translate, event)).toBe(
           i18n.t(`announce.${operation.kind}`, { value: '7' })
         );
 

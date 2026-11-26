@@ -65,6 +65,6 @@ In another terminal run `npm run test:ui`. Set `UI_BASE_URL` to use a different 
 
 ## Avatar SDK patch
 
-`patches/@devvit+reddit+0.15.3.patch` exposes `iconImg` from the Reddit user response as `profileImageUrl`, so players can see their own picture on the board. `postinstall` applies it with `patch-package --error-on-fail`. Commit the patch and the lockfile, not `node_modules`. Installing with scripts disabled skips the patch.
+`patches/@devvit+reddit+0.15.6.patch` exposes `iconImg` from the Reddit user response as `profileImageUrl`, so players can see their own picture on the board. `postinstall` applies it with `patch-package --error-on-fail`. Commit the patch and the lockfile, not `node_modules`. Installing with scripts disabled skips the patch.
 
 The server prefers the Snoovatar, then the profile icon, then a numbered token. The patched SDK code is bundled into the server. Devvit does not support this extension, so review or remove it when upgrading Devvit and before a public release. See [Devvit issue 121](https://github.com/reddit/devvit/issues/121).

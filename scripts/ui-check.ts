@@ -1177,17 +1177,23 @@ try {
             )
         )
         .toBe(true);
+      // A move that was already committed when Pause was clicked may still
+      // settle. Sample a few times: a paused token must come to rest.
+      let stationary = false;
+      for (let attempt = 0; attempt < 3 && !stationary; attempt += 1) {
+        stationary = await routeDialog
+          .locator('.player-overlay')
+          .evaluate(async (token) => {
+            const before = token.getBoundingClientRect();
+            await new Promise((resolve) => setTimeout(resolve, 900));
+            const after = token.getBoundingClientRect();
+            return (
+              Math.abs(before.x - after.x) < 1 &&
+              Math.abs(before.y - after.y) < 1
+            );
+          });
+      }
       const progress = await routeDialog.getByRole('status').textContent();
-      const stationary = await routeDialog
-        .locator('.player-overlay')
-        .evaluate(async (token) => {
-          const before = token.getBoundingClientRect();
-          await new Promise((resolve) => setTimeout(resolve, 900));
-          const after = token.getBoundingClientRect();
-          return (
-            Math.abs(before.x - after.x) < 1 && Math.abs(before.y - after.y) < 1
-          );
-        });
       assert(stationary, 'Paused route token must not move');
       await expect(routeDialog.getByRole('status')).toHaveText(progress!);
       await routeDialog

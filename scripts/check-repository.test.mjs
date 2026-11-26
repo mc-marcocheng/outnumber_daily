@@ -34,7 +34,7 @@ test('allows source, documentation and reproducible tooling', () => {
     'tools/verify-season.ts',
     '.env.example',
     'scripts/ui-check.ts',
-    'patches/@devvit+reddit+0.15.3.patch',
+    'patches/@devvit+reddit+0.15.6.patch',
     '.githooks/pre-commit',
   ]) {
     assert.equal(isPrivatePath(filename), false, filename);
