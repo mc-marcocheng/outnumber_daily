@@ -561,14 +561,18 @@
   font-weight: 750;
 }
 .daily-result-actions {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
+  justify-content: center;
   width: 100%;
   gap: 8px;
   margin-top: 12px;
 }
+.daily-result-actions > * {
+  flex: 0 1 calc((100% - 16px) / 3);
+  min-width: 0;
+}
 .daily-result-actions > :only-child {
-  grid-column: 1 / -1;
+  flex-basis: 100%;
 }
 .daily-result-actions .toolbar-button {
   min-height: 68px;

@@ -208,6 +208,8 @@
 }
 .board-win-mark {
   position: absolute;
+  /* Above the player token, which sits at z-index 3. */
+  z-index: 10;
   inset: 0;
   margin: auto;
   display: flex;
