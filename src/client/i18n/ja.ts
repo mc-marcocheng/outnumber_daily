@@ -22,10 +22,8 @@ export const ja: Messages = {
   'game.dividePreview': '割り算：{{before}} → {{after}}',
   'game.takeSubtract': '{{value}}を引く',
   'game.takeDivide': '{{value}}で割る',
-  'game.nonPositiveResult':
-    '結果は1以上でなければなりません。タイルは残り、歩数は増えません。',
-  'game.nonIntegerResult':
-    '割り算の結果は整数でなければなりません。タイルは残り、歩数は増えません。',
+  'game.nonPositiveResult': '結果は1以上でなければなりません。',
+  'game.nonIntegerResult': '割り算の結果は整数でなければなりません。',
   'hintAction.subtract': '開始地点から、−{{value}}のタイルを取りましょう。',
   'hintAction.divide': '開始地点から、÷{{value}}のタイルを取りましょう。',
   'announce.subtract': '引き算をしました。値は{{value}}です。',

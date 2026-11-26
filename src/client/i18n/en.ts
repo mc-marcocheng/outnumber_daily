@@ -20,8 +20,7 @@ export const en = {
   'game.dividePreview': 'Divide: {{before}} → {{after}}',
   'game.takeSubtract': 'Subtract {{value}}',
   'game.takeDivide': 'Divide by {{value}}',
-  'game.nonPositiveResult':
-    'The result must be at least 1. The tile stays and no steps are spent.',
+  'game.nonPositiveResult': 'The result must be at least 1.',
   'game.nonIntegerResult': 'Division must give a whole number.',
   'hintAction.subtract': 'From the start, take the −{{value}} tile.',
   'hintAction.divide': 'From the start, take the ÷{{value}} tile.',
