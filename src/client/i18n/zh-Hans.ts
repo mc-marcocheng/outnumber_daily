@@ -55,7 +55,7 @@ export const zhHans: Messages = {
   'game.respawnPreview': '以 {{value}} 回到起点 • 用掉 1 条备用生命',
   'game.lossPreview': '你无法击败它。',
   'game.lossFinal': '备用生命已用完，这一局会结束。',
-  'game.tieLoses': '数值相同也算输。',
+  'game.tieLoses': '数值相同也会落败。',
 
   'tile.window': '数值为 {{min}}–{{max}} 时可吸收',
   'tile.exactWindow': '数值恰为 {{value}} 时可吸收',
