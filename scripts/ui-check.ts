@@ -1034,9 +1034,68 @@ try {
   await expect(page.locator('.tutorial-list-item--guided')).toHaveClass(
     /action-highlight/
   );
+  await expect(page.locator('.tutorial-stops > li')).toHaveCount(11);
+  await expect(page.locator('.tutorial-road-bed')).toBeVisible();
+  const nextTutorial = page.locator('.tutorial-stops [aria-current="step"]');
+  await expect(nextTutorial).toHaveAccessibleName(
+    'The first run Guided walkthrough'
+  );
+  await expect(nextTutorial.locator('.tutorial-route-token')).toBeVisible();
+  for (const viewport of [
+    { width: 320, height: 300 },
+    { width: 375, height: 480 },
+    { width: 1440, height: 900 },
+  ]) {
+    await page.setViewportSize(viewport);
+    const fits = await page.locator('.tutorial-menu').evaluate((menu) => {
+      const route = menu.querySelector('.tutorial-route')!;
+      const panel = menu.getBoundingClientRect();
+      const map = route.getBoundingClientRect();
+      return (
+        menu.scrollHeight <= menu.clientHeight + 1 &&
+        Math.abs(panel.x + panel.width / 2 - map.x - map.width / 2) < 1 &&
+        Math.abs(panel.y + panel.height / 2 - map.y - map.height / 2) < 1 &&
+        [...route.querySelectorAll('li > button')].every((stop) => {
+          const bounds = stop.getBoundingClientRect();
+          return (
+            bounds.bottom <=
+            stop.parentElement!.getBoundingClientRect().bottom + 1
+          );
+        })
+      );
+    });
+    assert.ok(
+      fits,
+      `Tutorial menu must fit at ${viewport.width}x${viewport.height}`
+    );
+    await expect(page.locator('.tutorial-list-item').last()).toBeInViewport({
+      ratio: 1,
+    });
+  }
+  await page.setViewportSize({ width: 375, height: 596 });
+  await screenshot('ui-tutorial-route-menu');
+  const ruleDialog = page.locator('.tutorial-rule-card');
+  const gotIt = ruleDialog.getByRole('button', { name: 'Got it', exact: true });
   await page
     .getByRole('button', { name: 'The first run Guided walkthrough' })
     .click();
+  await expect(ruleDialog).toBeVisible();
+  await expect(
+    ruleDialog.getByRole('heading', { name: 'You', exact: true })
+  ).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(ruleDialog).toBeVisible();
+  const ruleDemo = ruleDialog.locator('.tutorial-rule-demo');
+  await expect(ruleDemo.locator('.tile--add')).toHaveCount(0, {
+    timeout: 10000,
+  });
+  await expect(ruleDemo.locator('.tile--add')).toBeVisible({ timeout: 15000 });
+  await screenshot('ui-tutorial-rule-card');
+  await gotIt.click();
+  await expect(ruleDialog).toHaveCount(0);
+  await expect(
+    page.getByRole('button', { name: 'Next', exact: true })
+  ).toBeFocused();
   await expect(
     page.getByRole('heading', { name: 'You', exact: true })
   ).toBeVisible();
@@ -1047,6 +1106,14 @@ try {
       page.getByRole('button', { name: 'Next', exact: true })
     ).toHaveClass(/action-highlight/);
     await page.getByRole('button', { name: 'Next', exact: true }).click();
+    if (index + 1 !== 8) {
+      await expect(ruleDialog.getByRole('heading')).toHaveText(
+        guidedPages[index + 1]!.title
+      );
+      await gotIt.click();
+    } else {
+      await expect(ruleDialog).toHaveCount(0);
+    }
     for (const cell of guidedPages[index + 1]!.focusCells) {
       await expect(
         page.locator(`.board > :nth-child(${cell + 1})`)
@@ -1097,13 +1164,22 @@ try {
   await expect(page.locator('.tutorial-list-item--guided')).not.toHaveClass(
     /action-highlight/
   );
+  await expect(nextTutorial).toHaveAccessibleName(lessons[0]!.title);
   for (const [index, lesson] of lessons.entries()) {
-    await page
-      .getByRole('button', {
-        name: `${String(index + 1).padStart(2, '0')} ${lesson.title}`,
-        exact: true,
-      })
-      .click();
+    const practice = page.getByRole('button', {
+      name: lesson.title,
+      exact: true,
+    });
+    await expect(practice.locator('.lesson-tile > span').first()).toHaveText(
+      new RegExp(`^[^0-9]*${index + 1}$`)
+    );
+    await practice.click();
+    if (['undo', 'subtract', 'divide'].includes(lesson.id)) {
+      await expect(ruleDialog.getByRole('heading')).toHaveText(lesson.title);
+      await gotIt.click();
+    } else {
+      await expect(ruleDialog).toHaveCount(0);
+    }
     if (index === 0) {
       for (const viewport of [
         { width: 375, height: 512 },
@@ -1249,6 +1325,16 @@ try {
     await page
       .getByRole('button', { name: 'Tutorial menu', exact: true })
       .click();
+    if (index === 0) {
+      await page
+        .getByRole('button', { name: 'Close tutorials', exact: true })
+        .click();
+      await page
+        .getByRole('button', { name: 'Tutorials', exact: true })
+        .click();
+      await expect(nextTutorial).toHaveAccessibleName(lessons[1]!.title);
+      await expect(practice.locator('.tutorial-stop-check')).toBeVisible();
+    }
   }
   await page
     .getByRole('button', { name: 'Close tutorials', exact: true })
@@ -1316,9 +1402,12 @@ try {
   );
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.goto(`${baseUrl}/tutorial.html`);
+  await expect(page.locator('.tutorial-stop-check')).toHaveCount(11);
+  await expect(page.locator('.tutorial-route-token')).toHaveCount(0);
   await page
     .getByRole('button', { name: 'The first run Guided walkthrough' })
     .click();
+  await expect(page.locator('.tutorial-rule-card')).toHaveCount(0);
   await expect(page.locator('.player-avatar')).toBeVisible();
   await page.getByRole('button', { name: 'Next', exact: true }).click();
   await expect(
@@ -1333,7 +1422,7 @@ try {
     .getByRole('button', { name: 'Tutorial menu', exact: true })
     .click();
   await page
-    .getByRole('button', { name: '02 A little stronger', exact: true })
+    .getByRole('button', { name: 'A little stronger', exact: true })
     .click();
   await page.locator('.tile--add').click();
   await expect(page.locator('.player-overlay .player-avatar')).toBeVisible();
@@ -1464,6 +1553,9 @@ try {
     await noRawKeys();
     await screenshot(`ui-archive-${locale}`);
     await archiveDialog.locator('.dialog-close').click();
+    await page.evaluate(() =>
+      localStorage.removeItem('outnumber-tutorial-rules-v1')
+    );
     await page.locator('.game-toolbar > button').first().click();
     await expect(page.locator('.tutorial-header h1')).toHaveText(
       tutorial['tutorial.title']!
@@ -1480,6 +1572,13 @@ try {
           exact: true,
         }),
       })
+      .click();
+    const localizedRule = page.locator('.tutorial-rule-card');
+    await expect(localizedRule.getByRole('heading')).toHaveText(
+      tutorial['tutorial.lesson.set.title']!
+    );
+    await localizedRule
+      .getByRole('button', { name: tutorial['tutorial.gotIt']!, exact: true })
       .click();
     await expect(page.locator('.tutorial-header h1')).toHaveText(
       tutorial['tutorial.lesson.set.title']!

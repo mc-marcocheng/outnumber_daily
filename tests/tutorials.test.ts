@@ -5,6 +5,7 @@ import {
   guidedPages,
   lessons,
 } from '../src/client/tutorials/lessons';
+import { ruleDemos } from '../src/client/tutorials/rule-demos';
 import {
   commitInteraction,
   createSession,
@@ -48,6 +49,14 @@ function winningRoutes(lesson: (typeof lessons)[number]): string[][] {
 }
 
 describe('tutorial routes', () => {
+  it('plays every looping rule demo to a win', () => {
+    for (const { level, solution } of new Set(Object.values(ruleDemos))) {
+      expect(restoreSession(level, solution).present.phase, level.id).toBe(
+        'won'
+      );
+    }
+  });
+
   it('orders prerequisite lessons before reducing operations and removes redundant combat practice', () => {
     expect(lessons.map((lesson) => lesson.id)).toEqual([
       'walking',

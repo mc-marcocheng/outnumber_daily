@@ -16,6 +16,7 @@ type Props = {
   /** Decorative outcome icon shown beside the title (never named). */
   titleIcon?: ReactNode;
   onOpenChange?: (open: boolean) => void;
+  onCloseAutoFocus?: (event: Event) => void;
 };
 
 /**
@@ -33,6 +34,7 @@ export function AppDialog({
   describedBy,
   titleIcon,
   onOpenChange,
+  onCloseAutoFocus,
 }: Props) {
   const { t } = useTranslation();
   const blockDismiss = (event: Event) => event.preventDefault();
@@ -55,6 +57,7 @@ export function AppDialog({
                 : '',
           ].join(' ')}
           aria-describedby={describedBy}
+          onCloseAutoFocus={onCloseAutoFocus}
           onEscapeKeyDown={dismissible ? undefined : blockDismiss}
           onPointerDownOutside={dismissible ? undefined : blockDismiss}
           onInteractOutside={dismissible ? undefined : blockDismiss}

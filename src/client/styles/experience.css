@@ -363,7 +363,7 @@
   }
 }
 .toolbar-button.action-highlight:not(:disabled),
-.tutorial-list-item.action-highlight:not(:disabled) {
+.tutorial-list-item.action-highlight .lesson-tile {
   animation: action-glow 3.6s ease-in-out infinite;
 }
 @keyframes action-glow {
@@ -382,25 +382,22 @@
   }
 }
 .toolbar-button.action-highlight:focus-visible:not(:disabled),
-.tutorial-list-item.action-highlight:focus-visible:not(:disabled) {
+.tutorial-list-item.action-highlight:focus-visible .lesson-tile {
   animation: none;
 }
 @media (hover: hover) and (pointer: fine) {
-  .toolbar-button.action-highlight:hover:not(:disabled),
-  .tutorial-list-item.action-highlight:hover:not(:disabled) {
+  .toolbar-button.action-highlight:hover:not(:disabled) {
     transform: none;
   }
   .toolbar-button,
-  .icon-button,
-  .tutorial-list-item {
+  .icon-button {
     transition:
       transform 140ms ease,
       border-color 140ms ease,
       background-color 140ms ease,
       box-shadow 140ms ease;
   }
-  .toolbar-button:not(.action-highlight):hover:not(:disabled),
-  .tutorial-list-item:not(.action-highlight):hover:not(:disabled) {
+  .toolbar-button:not(.action-highlight):hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 3px 8px
       color-mix(in srgb, var(--color-shadow) 40%, transparent);
@@ -499,7 +496,7 @@
 }
 :root[data-motion='reduced'] .toolbar-button,
 :root[data-motion='reduced'] .icon-button,
-:root[data-motion='reduced'] .tutorial-list-item {
+:root[data-motion='reduced'] .tutorial-list-item .lesson-tile {
   animation: none !important;
   transition: none;
   transform: none;
@@ -507,7 +504,7 @@
 @media (prefers-reduced-motion: reduce) {
   .toolbar-button,
   .icon-button,
-  .tutorial-list-item {
+  .tutorial-list-item .lesson-tile {
     animation: none !important;
     transition: none;
     transform: none !important;

@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   ArrowLeft,
   ArrowRight,
   BookOpen,
   Check,
+  Flag,
   RotateCcw,
   Undo2,
   X,
@@ -23,15 +24,86 @@ import {
 } from '../tutorials/lessons';
 import { BoardStage } from '../components/BoardStage';
 import { PlayerStatus } from '../components/PlayerStatus';
+import { PlayerToken } from '../components/PlayerToken';
 import { useInteractionAnimation } from '../presentation/useInteractionAnimation';
 import { useMediaQuery } from '../app/useMediaQuery';
 import { interact } from '../../shared/game/engine';
 import { AppDialog } from '../components/AppDialog';
 import { RoutePlayback } from '../tutorials/RoutePlayback';
+import { ruleDemos } from '../tutorials/rule-demos';
 import { playSoundEffect, unlockSoundEffects } from '../app/sound-effects';
 import { formatInteractionFailure } from '../components/interaction-failure';
 import { translator } from '../components/i18n-types';
 import { formatAnnouncement } from '../components/game-event-announcement';
+
+const practiceTiles: Record<string, readonly [kind: string, sign?: string]> = {
+  walking: ['player'],
+  addition: ['add', '+'],
+  multiply: ['multiply', '\u00d7'],
+  undo: ['multiply', '\u00d7'],
+  window: ['enemy'],
+  subtract: ['subtract', '\u2212'],
+  divide: ['divide', '\u00f7'],
+  set: ['set', '='],
+  bank: ['enemy'],
+  blocked: ['boss'],
+};
+
+const guidedRules = [
+  'player',
+  'walking',
+  'addition',
+  'multiply',
+  'set',
+  'combat',
+  'window',
+  'bank',
+  null,
+  'boss',
+];
+const RULE_STORAGE_KEY = 'outnumber-tutorial-rules-v1';
+const PROGRESS_STORAGE_KEY = 'outnumber-tutorial-progress-v1';
+const GUIDED_STOP = 'guided';
+
+function readTutorialIds(key: string): readonly string[] {
+  try {
+    const saved: unknown = JSON.parse(localStorage.getItem(key) ?? '[]');
+    if (Array.isArray(saved))
+      return saved.filter((rule): rule is string => typeof rule === 'string');
+  } catch {
+    return [];
+  }
+  return [];
+}
+
+function saveTutorialIds(key: string, ids: readonly string[]) {
+  try {
+    localStorage.setItem(key, JSON.stringify(ids));
+  } catch {
+    return;
+  }
+}
+
+const routeStops = Array.from({ length: lessons.length + 1 }, (_, index) => {
+  const row = Math.floor(index / 3);
+  const lane = index % 3;
+  const column = row % 2 ? 2 - lane : lane;
+  return { column, row, x: ((column + 0.5) * 1000) / 3, y: row * 114 + 38 };
+});
+const tutorialRoad = routeStops.slice(1).reduce((path, stop, index) => {
+  const previous = routeStops[index]!;
+  if (stop.row === previous.row) return `${path} H ${stop.x}`;
+  const bend = stop.x + (stop.column === 0 ? -145 : 145);
+  return `${path} C ${bend} ${previous.y} ${bend} ${stop.y} ${stop.x} ${stop.y}`;
+}, `M ${routeStops[0]!.x} ${routeStops[0]!.y}`);
+
+function RouteMarker({ avatarUrl }: { avatarUrl: string | null }) {
+  return (
+    <span className="tutorial-route-token" aria-hidden="true">
+      <PlayerToken avatarUrl={avatarUrl} value={1n} />
+    </span>
+  );
+}
 
 export function TutorialScreen({
   onClose,
@@ -49,9 +121,15 @@ export function TutorialScreen({
   const [blocked, setBlocked] = useState(0);
   const [failureReason, setFailureReason] = useState('unreachable');
   const [announcement, setAnnouncement] = useState('');
-  const [completed, setCompleted] = useState<readonly string[]>([]);
-  const [guidedCompleted, setGuidedCompleted] = useState(false);
+  const [completed, setCompleted] = useState(() =>
+    readTutorialIds(PROGRESS_STORAGE_KEY)
+  );
+  const guidedCompleted = completed.includes(GUIDED_STOP);
   const [showRoute, setShowRoute] = useState(false);
+  const [seenRules, setSeenRules] = useState(() =>
+    readTutorialIds(RULE_STORAGE_KEY)
+  );
+  const ruleReturn = useRef<HTMLButtonElement>(null);
   const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
   const animation = useInteractionAnimation({
     reducedMotion,
@@ -65,6 +143,31 @@ export function TutorialScreen({
     ? restoreSession(guidedLevel, guidedActions.slice(0, page)).present
     : session.present;
   const selectedPage = guidedPages[page]!;
+  const rule = guided
+    ? guidedRules[page]
+    : lesson?.id === 'blocked'
+      ? 'walking'
+      : lesson?.id;
+  const showRule = rule && !seenRules.includes(rule) && !animation.animating;
+  const ruleDemo = rule ? ruleDemos[rule] : undefined;
+  const lessonTitle = lesson && t(`tutorial.lesson.${lesson.id}.title`);
+  const ruleTitle = guided
+    ? t(`tutorial.guided.page.${page}.title`)
+    : (lessonTitle ?? '');
+  const nextStop = guidedCompleted
+    ? lessons.findIndex(({ id }) => !completed.includes(id)) + 1 || null
+    : 0;
+  const acknowledgeRule = (id: string) => {
+    const next = [...seenRules, id];
+    setSeenRules(next);
+    saveTutorialIds(RULE_STORAGE_KEY, next);
+  };
+  const completeStop = (id: string) => {
+    if (completed.includes(id)) return;
+    const next = [...completed, id];
+    setCompleted(next);
+    saveTutorialIds(PROGRESS_STORAGE_KEY, next);
+  };
   const select = (index: number) => {
     animation.cancel();
     setActive(index);
@@ -96,10 +199,7 @@ export function TutorialScreen({
     animation.start(outcome.result, lesson.level, session.present, () =>
       playSoundEffect(soundKind)
     );
-    if (outcome.session.present.phase === 'won')
-      setCompleted((values) =>
-        values.includes(lesson.id) ? values : [...values, lesson.id]
-      );
+    if (outcome.session.present.phase === 'won') completeStop(lesson.id);
   };
   const nextPage = () => {
     if (animation.busyRef.current) return;
@@ -109,13 +209,15 @@ export function TutorialScreen({
     }
     const result = interact(guidedLevel, state, guidedActions[page]!);
     if (!result.ok) return;
-    if (result.state.phase === 'won') setGuidedCompleted(true);
+    if (result.state.phase === 'won') completeStop(GUIDED_STOP);
     setPage((value) => value + 1);
     animation.markBusy();
     animation.start(result, guidedLevel, state);
   };
   return (
-    <section className="screen tutorial-screen">
+    <section
+      className={`screen tutorial-screen${active === null ? ' tutorial-screen--menu' : ''}`}
+    >
       <header className="tutorial-header">
         <button
           className="icon-button"
@@ -146,33 +248,90 @@ export function TutorialScreen({
       </header>
       {active === null ? (
         <div className="tutorial-menu">
-          <button
-            className={`tutorial-list-item tutorial-list-item--guided${guidedCompleted ? '' : ' action-highlight'}`}
-            onClick={() => select(-1)}
-          >
-            <BookOpen />
-            <span>
-              <strong>{t('tutorial.guided.title')}</strong>
-              <small>{t('tutorial.guided.description')}</small>
-            </span>
-            {guidedCompleted ? <Check /> : <ArrowRight />}
-          </button>
-          <h2>{t('tutorial.practice')}</h2>
-          {lessons.map((item, index) => (
-            <button
-              key={item.id}
-              className="tutorial-list-item"
-              onClick={() => select(index)}
+          <div className="tutorial-route">
+            <svg
+              viewBox={`0 0 1000 ${(routeStops.at(-1)!.row + 1) * 114}`}
+              preserveAspectRatio="none"
+              aria-hidden="true"
             >
-              <span className="lesson-number">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <span>
-                <strong>{t(`tutorial.lesson.${item.id}.title`)}</strong>
-              </span>
-              {completed.includes(item.id) ? <Check /> : <ArrowRight />}
-            </button>
-          ))}
+              <path className="tutorial-road-edge" d={tutorialRoad} />
+              <path className="tutorial-road-bed" d={tutorialRoad} />
+              <path className="tutorial-road-dash" d={tutorialRoad} />
+            </svg>
+            <ol className="tutorial-stops" role="list">
+              <li style={{ gridColumn: 1, gridRow: 1 }}>
+                <button
+                  className={`tutorial-list-item tutorial-list-item--guided${guidedCompleted ? '' : ' action-highlight'}`}
+                  onClick={() => select(-1)}
+                  aria-current={nextStop === 0 ? 'step' : undefined}
+                  aria-description={
+                    guidedCompleted ? t('levels.completed') : undefined
+                  }
+                >
+                  <span
+                    className="lesson-tile tile tile--player"
+                    aria-hidden="true"
+                  >
+                    <Flag />
+                    {nextStop === 0 && <RouteMarker avatarUrl={avatarUrl} />}
+                  </span>
+                  <span className="tutorial-stop-label">
+                    <strong>{t('tutorial.guided.title')}</strong>
+                    <small>{t('tutorial.guided.description')}</small>
+                  </span>
+                  {guidedCompleted && (
+                    <Check className="tutorial-stop-check" aria-hidden="true" />
+                  )}
+                </button>
+              </li>
+              {lessons.map((item, index) => {
+                const [kind, sign] = practiceTiles[item.id] ?? ['player'];
+                const stop = routeStops[index + 1]!;
+                return (
+                  <li
+                    key={item.id}
+                    style={{
+                      gridColumn: stop.column + 1,
+                      gridRow: stop.row + 1,
+                    }}
+                  >
+                    <button
+                      className="tutorial-list-item"
+                      onClick={() => select(index)}
+                      aria-current={nextStop === index + 1 ? 'step' : undefined}
+                      aria-description={
+                        completed.includes(item.id)
+                          ? t('levels.completed')
+                          : undefined
+                      }
+                    >
+                      <span
+                        className={`lesson-tile tile tile--${kind}`}
+                        aria-hidden="true"
+                      >
+                        <span>{`${sign ?? ''}${index + 1}`}</span>
+                        {item.id === 'window' && (
+                          <span className="lesson-tile-window">6-7</span>
+                        )}
+                        {nextStop === index + 1 && (
+                          <RouteMarker avatarUrl={avatarUrl} />
+                        )}
+                      </span>
+                      <span className="tutorial-stop-label">
+                        <strong>{t(`tutorial.lesson.${item.id}.title`)}</strong>
+                      </span>
+                      {completed.includes(item.id) && (
+                        <Check
+                          className="tutorial-stop-check"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </button>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
         </div>
       ) : level ? (
         <>
@@ -245,6 +404,44 @@ export function TutorialScreen({
                     : announcement}
             </p>
           </div>
+          {showRule && rule && (
+            <AppDialog
+              open
+              title={ruleTitle}
+              describedBy="tutorial-rule-copy"
+              className="tutorial-rule-card"
+              onCloseAutoFocus={(event) => {
+                if (!ruleReturn.current) return;
+                event.preventDefault();
+                ruleReturn.current.focus();
+              }}
+            >
+              {ruleDemo && (
+                <div className="tutorial-rule-demo">
+                  <RoutePlayback
+                    key={rule}
+                    {...ruleDemo}
+                    avatarUrl={avatarUrl}
+                    boardLabel={ruleTitle}
+                    compact
+                    loop
+                  />
+                </div>
+              )}
+              <p id="tutorial-rule-copy">
+                {guided
+                  ? t(`tutorial.guided.page.${page}.text`)
+                  : lesson && t(`tutorial.lesson.${lesson.id}.description`)}
+              </p>
+              <button
+                type="button"
+                className="toolbar-button action-highlight"
+                onClick={() => acknowledgeRule(rule)}
+              >
+                {t('tutorial.gotIt')}
+              </button>
+            </AppDialog>
+          )}
           {showRoute && lesson && (
             <AppDialog
               open={showRoute}
@@ -305,6 +502,7 @@ export function TutorialScreen({
                 </button>
                 <button
                   className="toolbar-button action-highlight"
+                  ref={ruleReturn}
                   disabled={animation.animating}
                   onClick={nextPage}
                 >
@@ -345,6 +543,7 @@ export function TutorialScreen({
                 </button>
                 <button
                   className="toolbar-button"
+                  ref={ruleReturn}
                   disabled={animation.animating}
                   onClick={() => setShowRoute((value) => !value)}
                 >

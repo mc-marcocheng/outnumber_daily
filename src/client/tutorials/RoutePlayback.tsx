@@ -15,6 +15,7 @@ export function RoutePlayback({
   avatarUrl,
   boardLabel,
   compact = false,
+  loop = false,
   finishedContent,
 }: {
   level: Level;
@@ -22,6 +23,7 @@ export function RoutePlayback({
   avatarUrl: string | null;
   boardLabel?: string;
   compact?: boolean;
+  loop?: boolean;
   finishedContent?: ReactNode;
 }) {
   const { t } = useTranslation();
@@ -58,7 +60,15 @@ export function RoutePlayback({
 
   useEffect(() => {
     const action = solution[index];
-    if (!ready || !action || paused) return;
+    if (!ready || paused) return;
+    if (!action) {
+      if (!loop || !solution.length) return;
+      const reset = window.setTimeout(() => {
+        setState(initialState(level));
+        setIndex(0);
+      }, 1400);
+      return () => clearTimeout(reset);
+    }
     const timer = window.setTimeout(
       () => {
         const result = interact(level, state, action);
@@ -71,7 +81,17 @@ export function RoutePlayback({
       reducedMotion ? 1000 : 500
     );
     return () => clearTimeout(timer);
-  }, [index, level, ready, reducedMotion, solution, start, state, paused]);
+  }, [
+    index,
+    level,
+    loop,
+    ready,
+    reducedMotion,
+    solution,
+    start,
+    state,
+    paused,
+  ]);
 
   const finished = index === solution.length && ready;
 
@@ -86,7 +106,7 @@ export function RoutePlayback({
           <button
             type="button"
             className="toolbar-button"
-            disabled={finished}
+            disabled={finished && !loop}
             title={t(paused ? 'tutorial.play' : 'tutorial.pause')}
             aria-label={t(paused ? 'tutorial.play' : 'tutorial.pause')}
             onClick={() => setPaused((value) => !value)}
