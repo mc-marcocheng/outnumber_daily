@@ -181,7 +181,7 @@ describe('explicit result comments', () => {
       runAs: 'USER',
     });
     expect(mocks.set).toHaveBeenCalledWith(
-      `share-result:season-1:t3_puzzle:2026-11-14:easy:t2_player:${requestId}`,
+      `share-result:season-2:t3_puzzle:2026-11-14:easy:t2_player:${requestId}`,
       JSON.stringify({ pending: true }),
       { nx: true, expiration: expect.any(Date) }
     );

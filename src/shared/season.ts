@@ -17,7 +17,7 @@ export function isDifficulty(value: unknown): value is Difficulty {
 export const SEASON_ANCHOR = '2026-11-11';
 
 /** Prefix for season-scoped storage keys and realtime channels. */
-export const SEASON_ID = 'season-1';
+export const SEASON_ID = 'season-2';
 
 export type SeasonPools = Readonly<Record<SeasonTier, readonly string[]>>;
 

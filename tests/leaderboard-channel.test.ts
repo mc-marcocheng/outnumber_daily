@@ -4,7 +4,7 @@ import { leaderboardChannel } from '../src/shared/leaderboard-channel';
 describe('leaderboard realtime channel', () => {
   it('uses only characters accepted by the Devvit client SDK', () => {
     expect(leaderboardChannel('2026-11-14')).toBe(
-      'outnumber_lb_season_1_2026_11_14_easy'
+      'outnumber_lb_season_2_2026_11_14_easy'
     );
     expect(leaderboardChannel('2026-11-14')).toMatch(/^[a-zA-Z0-9_]+$/);
   });

@@ -65,8 +65,8 @@ describe('difficulty-scoped progress', () => {
   it('keeps independent score keys but counts a day once for streak', async () => {
     await recordScore('2026-11-21', 'user', 8, 'easy');
     await recordScore('2026-11-21', 'user', 20, 'hard');
-    expect(scores.get('season-1:lb:2026-11-21:easy')?.get('user')).toBe(8);
-    expect(scores.get('season-1:lb:2026-11-21:hard')?.get('user')).toBe(20);
+    expect(scores.get('season-2:lb:2026-11-21:easy')?.get('user')).toBe(8);
+    expect(scores.get('season-2:lb:2026-11-21:hard')?.get('user')).toBe(20);
     await markStreak('2026-11-20', 'user');
     await markStreak('2026-11-21', 'user');
     await markStreak('2026-11-21', 'user');

@@ -20,7 +20,7 @@ describe('daily difficulty scheduling', () => {
         levelIdForDate(SEASON_ANCHOR, pools, SEASON_ANCHOR, difficulty)
       )
     ).toEqual(['a0', 'e0', 'm0']);
-    expect(SEASON_ID).toBe('season-1');
+    expect(SEASON_ID).toBe('season-2');
   });
   it('advances daily and wraps backward independently', () => {
     expect(levelIdForDate('2026-11-12', pools, SEASON_ANCHOR, 'medium')).toBe(
