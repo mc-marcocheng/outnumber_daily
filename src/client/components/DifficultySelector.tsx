@@ -1,9 +1,34 @@
-import { Check, CircleDot, Grid2X2 } from 'lucide-react';
+import { Check, CircleDot } from 'lucide-react';
 import { useId } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DIFFICULTIES, type Difficulty } from '../../shared/season';
 import type { DifficultyProgress } from '../../shared/api';
 import '../styles/difficulty.css';
+
+const PREVIEW_ROWS: Record<Difficulty, readonly string[]> = {
+  easy: ['1..', '.#.', '..5'],
+  medium: ['1.#.', '..#.', '#...', '...8'],
+  hard: ['1..#.', '.#...', '..#..', '#..#.', '....9'],
+};
+
+function DifficultyBoard({ difficulty }: { difficulty: Difficulty }) {
+  const rows = PREVIEW_ROWS[difficulty];
+  return (
+    <span
+      className="difficulty-board"
+      data-size={rows.length}
+      aria-hidden="true"
+    >
+      {rows.flatMap((row, rowIndex) =>
+        Array.from(row, (tile, columnIndex) => (
+          <span key={`${rowIndex}:${columnIndex}`} data-tile={tile}>
+            {tile === '.' || tile === '#' ? null : tile}
+          </span>
+        ))
+      )}
+    </span>
+  );
+}
 
 export function DifficultySelector({
   value,
@@ -50,13 +75,7 @@ export function DifficultySelector({
               onChange={() => onChange(difficulty)}
             />
             <span className="difficulty-content">
-              {expanded && (
-                <Grid2X2
-                  className="difficulty-board-icon"
-                  size={28}
-                  aria-hidden="true"
-                />
-              )}
+              {expanded && <DifficultyBoard difficulty={difficulty} />}
               <span className="difficulty-name">
                 {t(`difficulty.${difficulty}`)}
               </span>

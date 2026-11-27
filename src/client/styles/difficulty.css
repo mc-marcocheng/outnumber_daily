@@ -70,45 +70,99 @@
   text-align: center;
 }
 .difficulty-selector-expanded {
+  --difficulty-depth: 5px;
   gap: 10px;
   margin: 12px 0 6px;
+  padding-bottom: var(--difficulty-depth);
 }
 .difficulty-selector-expanded .difficulty-content {
+  --difficulty-wash: color-mix(
+    in srgb,
+    var(--difficulty-accent) 18%,
+    var(--color-surface)
+  );
   flex-direction: column;
-  gap: 12px;
-  min-height: 158px;
-  padding: 22px 6px 18px;
-  border: 1px solid var(--color-floor-edge);
-  border-top: 4px solid var(--difficulty-accent);
-  border-radius: 6px;
-  background: var(--color-surface);
+  gap: 9px;
+  min-height: 120px;
+  padding: 18px 4px 12px;
+  border-width: 1px;
+  box-shadow: 0 var(--difficulty-depth) 0 var(--difficulty-accent);
   font-size: 0.9375rem;
+  font-weight: 700;
   transition:
     background 120ms ease,
-    border-color 120ms ease;
+    box-shadow 120ms ease,
+    transform 120ms ease;
 }
-.difficulty-selector-expanded .difficulty-option:hover .difficulty-content {
+.difficulty-selector-expanded:not(:disabled)
+  .difficulty-option:hover
+  input:not(:checked)
+  + .difficulty-content {
   background: var(--color-nav-selected);
-  border-color: var(--difficulty-accent);
 }
 .difficulty-selector-expanded
   .difficulty-option
   input:checked
   + .difficulty-content {
-  background: var(--color-surface);
-  border-color: var(--difficulty-accent);
-  outline: 2px solid var(--difficulty-accent);
-  outline-offset: 2px;
+  background: var(--difficulty-wash);
+  box-shadow: inset 0 3px 0 var(--difficulty-accent);
+  transform: translateY(var(--difficulty-depth));
+  outline: none;
 }
 .difficulty-selector-expanded
   .difficulty-option
   input:focus-visible
   + .difficulty-content {
   outline: 3px solid var(--color-focus);
-  outline-offset: 3px;
+  outline-offset: 1px;
 }
-.difficulty-board-icon {
+@media (prefers-reduced-motion: reduce) {
+  .difficulty-selector-expanded .difficulty-content {
+    transition: none;
+  }
+}
+.difficulty-board {
+  --difficulty-board-size: 3;
+  --difficulty-track: repeat(var(--difficulty-board-size), minmax(0, 1fr));
+  display: grid;
+  grid-template: var(--difficulty-track) / var(--difficulty-track);
   flex-shrink: 0;
+  box-sizing: border-box;
+  width: 56px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 4px;
+  background: var(--difficulty-accent);
+}
+.difficulty-board[data-size='4'] {
+  --difficulty-board-size: 4;
+}
+.difficulty-board[data-size='5'] {
+  --difficulty-board-size: 5;
+}
+.difficulty-board > span {
+  display: grid;
+  place-items: center;
+  border-radius: 2px;
+  color: var(--color-ink);
+  background: var(--difficulty-wash);
+  font-size: 9px;
+  line-height: 1;
+}
+.difficulty-board > [data-tile='#'] {
+  background: var(--color-ink);
+}
+.difficulty-board > [data-tile='1'] {
+  background: var(--color-surface);
+}
+.difficulty-board > :last-child {
+  background: color-mix(
+    in srgb,
+    var(--difficulty-accent) 36%,
+    var(--color-surface)
+  );
 }
 .archive-toolbar .difficulty-selector {
   flex: 1 1 180px;
@@ -161,6 +215,19 @@
   }
   .difficulty-option input:checked + .difficulty-content {
     outline-color: Highlight;
+  }
+  .difficulty-selector-expanded
+    .difficulty-option
+    input:checked
+    + .difficulty-content {
+    border-color: Highlight;
+  }
+  .difficulty-board > span {
+    border: 1px solid ButtonText;
+  }
+  .difficulty-board > [data-tile='#'] {
+    background: ButtonText;
+    forced-color-adjust: none;
   }
   .archive-toolbar .difficulty-content {
     color: ButtonText;

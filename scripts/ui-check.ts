@@ -1017,6 +1017,20 @@ try {
   await expect(
     levelDialog.getByRole('radio', { name: 'Hard', exact: true })
   ).toBeEnabled();
+  const previews = levelDialog.locator('.difficulty-board');
+  await expect(previews).toHaveCount(3);
+  for (const [index, cells] of [9, 16, 25].entries()) {
+    await expect(previews.nth(index).locator('[data-tile]')).toHaveCount(cells);
+  }
+  const pressedCard = levelDialog.locator(
+    'input:checked + .difficulty-content'
+  );
+  await expect(pressedCard).toHaveCSS('transform', 'matrix(1, 0, 0, 1, 0, 5)');
+  await expect(pressedCard).toHaveCSS('box-shadow', /inset/);
+  await expect(
+    levelDialog.locator('input:not(:checked) + .difficulty-content').first()
+  ).toHaveCSS('transform', 'none');
+  await screenshot('ui-level-pressed');
   await page.getByRole('button', { name: 'Close dialog', exact: true }).click();
   await inlineSteps(1);
   await page.getByRole('button', { name: 'Tutorials', exact: true }).click();
